@@ -28,14 +28,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="nabhack.localz.activity.DealSummaryActivity"
-            android:label="@string/title_activity_deal_summary" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name="nabhack.localz.activity.DealDetailsActivity_"
+            android:label="" >
         </activity>
+        <activity
+            android:name="nabhack.localz.activity.SecureDealActivity_"
+            android:label="" >
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>  
+                <activity
+            android:name="nabhack.localz.activity.RedeemActivity_"
+            android:label="" >
+        </activity>      
     </application>
 
 </manifest>
