@@ -34,9 +34,14 @@ public class Deal {
 		draft, published, complete, cancelled, suspended;
 	}
 	
+	private String _id;
+
 	private long store;
 	private long user;
 	private long device;
+	private String title;
+	private String savings;
+	private String cost;
 	private String description;
 	private String[] descImgs;
 	private Status status;
@@ -47,6 +52,24 @@ public class Deal {
 	private boolean isPushDeal;
 	private String discountCode;
 	private Location altClaimLocation;
+	
+	public Deal(String title, String savings, String image, String description) {
+		this.descImgs = new String[] { image };
+		this.title = title;
+		this.savings = savings;
+		this.description = description;
+	}
+	
+	public String toString() {
+		return title;
+	}
+	
+	/**
+	 * @return the _id
+	 */
+	public String get_id() {
+		return _id;
+	}
 	
 	/**
 	 * @return the store
@@ -203,6 +226,42 @@ public class Deal {
 	 */
 	public void setAltClaimLocation(Location altClaimLocation) {
 		this.altClaimLocation = altClaimLocation;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @return the savings
+	 */
+	public String getSavings() {
+		return savings;
+	}
+	/**
+	 * @param savings the savings to set
+	 */
+	public void setSavings(String savings) {
+		this.savings = savings;
+	}
+	/**
+	 * @return the cost
+	 */
+	public String getCost() {
+		return cost;
+	}
+	/**
+	 * @param cost the cost to set
+	 */
+	public void setCost(String cost) {
+		this.cost = cost;
 	}
 	
 	// User user
