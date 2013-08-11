@@ -5,13 +5,14 @@ import java.util.List;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class DealAdaptor extends ArrayAdapter<Deal> {
 	protected List<Deal> deals;
@@ -38,7 +39,8 @@ public class DealAdaptor extends ArrayAdapter<Deal> {
 
 		final Deal deal = deals.get(position);
 		if (deal != null) {
-			dealItem.image.loadUrl(deal.getDescImgs()[0]);
+			
+			ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], dealItem.image);
 			dealItem.title.setText(deal.getTitle());
 			dealItem.remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO: Include time remaining
 		}
@@ -47,13 +49,13 @@ public class DealAdaptor extends ArrayAdapter<Deal> {
 	
 	public static class DealListItem {
 
-		public WebView image;
+		public ImageView image;
 		public TextView title;
 		public TextView remaining;
 		
 		public DealListItem(View v) {
 			super();
-			this.image = (WebView) v.findViewById(R.id.image);
+			this.image = (ImageView) v.findViewById(R.id.image);
 			this.title = (TextView) v.findViewById(R.id.title);
 			this.remaining = (TextView) v.findViewById(R.id.remaining);
 			v.setTag(this);

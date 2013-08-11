@@ -7,6 +7,10 @@ import nabhack.localz.models.Deal;
 import android.app.Application;
 
 import com.googlecode.androidannotations.annotations.EApplication;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 @EApplication
 public class LocalzApp extends Application {
@@ -30,6 +34,23 @@ public class LocalzApp extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
+		// -------------------------------
+		// Configure ImageLoader
+		// -------------------------------
+        // Create global configuration and initialize ImageLoader with this configuration
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
+            .writeDebugLogs()
+            .defaultDisplayImageOptions(new DisplayImageOptions.Builder()
+	            //.showStubImage(R.drawable.ic_stub)
+	            //.showImageForEmptyUri(R.drawable.ic_empty)
+	            //.showImageOnFail(R.drawable.ic_error)
+	            .delayBeforeLoading(0)
+	            .cacheInMemory(true)
+	            //.cacheOnDisc(false) // default	     
+	            .build())
+            .build();
+        ImageLoader.getInstance().init(config);
 		
 		// -------------------------------
 		// Setup Mock Data

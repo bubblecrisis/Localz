@@ -23,12 +23,12 @@ public final class FacebookWallPostFragment_
 
     private void init_(Bundle savedInstanceState) {
         Resources resources_ = getActivity().getResources();
+        facebookRequestMoneyDesc = resources_.getString(string.facebook_share_to_wall_description);
         facebookPicture = resources_.getString(string.facebook_share_to_wall_picture);
         facebookName = resources_.getString(string.facebook_share_to_wall_name);
-        facebookRequestMoneyDesc = resources_.getString(string.facebook_share_to_wall_description);
-        facebookLink = resources_.getString(string.facebook_share_to_wall_link);
-        facebookCaption = resources_.getString(string.facebook_share_to_wall_caption);
         facebookDesc = resources_.getString(string.facebook_share_to_wall_description);
+        facebookCaption = resources_.getString(string.facebook_share_to_wall_caption);
+        facebookLink = resources_.getString(string.facebook_share_to_wall_link);
     }
 
     @Override

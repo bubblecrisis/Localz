@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R.id;
@@ -34,8 +34,8 @@ public final class SecureDealActivity_
     }
 
     private void afterSetContentView_() {
-        image = ((WebView) findViewById(id.image));
         details = ((TextView) findViewById(id.details));
+        image = ((ImageView) findViewById(id.image));
         remaining = ((TextView) findViewById(id.remaining));
         setupView();
     }

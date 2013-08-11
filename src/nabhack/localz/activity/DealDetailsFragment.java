@@ -3,20 +3,18 @@ package nabhack.localz.activity;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.webkit.WebView;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
-import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
 import com.googlecode.androidannotations.annotations.ViewById;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * A dummy fragment representing a section of the app, but that simply displays
@@ -29,7 +27,7 @@ public class DealDetailsFragment extends Fragment {
 	LocalzApp application;
 
 	@ViewById(R.id.image)
-	WebView image;  // Should be ImageView. Use WebView to get things going quickly! 
+	ImageView image; 
 
 	@ViewById(R.id.details)
 	TextView details;
@@ -44,7 +42,7 @@ public class DealDetailsFragment extends Fragment {
 	void setupView() {
 		Deal deal = application.getCurrentDeal();
 		details.setText(deal.getDescription());
-		image.loadUrl(deal.getDescImgs()[0]);
+		ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
 		remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO: Include time remaining
 		fixNoRectBasedTestNodeFoundProblem();
 	}

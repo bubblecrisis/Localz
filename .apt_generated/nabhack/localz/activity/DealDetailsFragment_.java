@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R.layout;
@@ -31,9 +31,9 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
-        details = ((TextView) findViewById(nabhack.localz.R.id.details));
-        image = ((WebView) findViewById(nabhack.localz.R.id.image));
         remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
+        image = ((ImageView) findViewById(nabhack.localz.R.id.image));
+        details = ((TextView) findViewById(nabhack.localz.R.id.details));
         setupView();
     }
 
