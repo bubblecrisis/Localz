@@ -9,19 +9,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.TextView;
-import nabhack.localz.LocalzApp;
-import nabhack.localz.R.layout;
 
-public final class DealDetailsFragment_
-    extends DealDetailsFragment
+public final class FacebookFragment_
+    extends FacebookFragment
 {
 
     private View contentView_;
 
     private void init_(Bundle savedInstanceState) {
-        application = ((LocalzApp) getActivity().getApplication());
     }
 
     @Override
@@ -31,18 +26,11 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
-        details = ((TextView) findViewById(nabhack.localz.R.id.details));
-        image = ((WebView) findViewById(nabhack.localz.R.id.image));
-        remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
-        setupView();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         contentView_ = super.onCreateView(inflater, container, savedInstanceState);
-        if (contentView_ == null) {
-            contentView_ = inflater.inflate(layout.fragment_deal_details, container, false);
-        }
         return contentView_;
     }
 
@@ -59,8 +47,8 @@ public final class DealDetailsFragment_
         return contentView_.findViewById(id);
     }
 
-    public static DealDetailsFragment_.FragmentBuilder_ builder() {
-        return new DealDetailsFragment_.FragmentBuilder_();
+    public static FacebookFragment_.FragmentBuilder_ builder() {
+        return new FacebookFragment_.FragmentBuilder_();
     }
 
     public static class FragmentBuilder_ {
@@ -71,8 +59,8 @@ public final class DealDetailsFragment_
             args_ = new Bundle();
         }
 
-        public DealDetailsFragment build() {
-            DealDetailsFragment_ fragment_ = new DealDetailsFragment_();
+        public FacebookFragment build() {
+            FacebookFragment_ fragment_ = new FacebookFragment_();
             fragment_.setArguments(args_);
             return fragment_;
         }

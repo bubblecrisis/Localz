@@ -7,7 +7,6 @@
     <string name="nab_warning_loging_off_during_registration_message">If you log out now, you\'ll have to start the registration process again next time.</string>
     <string name="nab_not_available_during_pilot">Not yet available. Coming in a future release.</string>
     <string name="nab_msg_error_incorrect_format_nabid">NAB ID has incorrect format</string>
-    <string name="nab_msg_error_incorrect_format_password">Password has incorrect format</string>
     <string name="nab_msg_error_passcode_not_match">Entered passcodes don\'t match. Please try again.</string>
    	<string name="nab_choose_default_kissaccount_error_account_not_selected">Please choose an account</string>
    	<string name="nab_logout_message_inactivity_timeout">You\'ve been logged out due to inactivity. Please login again.</string>
@@ -33,7 +32,6 @@
     <string name="nab_msg_error_no_account_can_be_set_as_default">Unfortunately, you don\'t have an account that can be used for NAB Flik. Please contact NAB on 132265 or visit www.nab.com.au to open a transaction account so you can use NAB Flik to send and receive money.</string>
     <string name="nab_msg_error_nfc_invalid">NFC token could\'nt be read.</string>
     <string name="nab_msg_error_nfc_server_error">An error occurred. Please try the NFC transfer again.</string>
-    <string name="nab_msg_error_nfc_not_registered">You must be registered to use NFC.</string>
     <string name="nab_msg_error_nfc_login_not_complete">Please first set a preferred account to continue with the payment process.</string>
     <string name="nab_msg_error_nfc_not_registered">You must be registered to use NFC.</string>
     <string name="nab_msg_error_token_details_failed_retry">An error occurred while obtaining payment details. Would you like to retry?</string>
