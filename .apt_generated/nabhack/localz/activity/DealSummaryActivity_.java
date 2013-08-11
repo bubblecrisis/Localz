@@ -11,6 +11,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import nabhack.localz.LocalzApp;
 import nabhack.localz.R.layout;
 
 public final class DealSummaryActivity_
@@ -26,9 +30,27 @@ public final class DealSummaryActivity_
     }
 
     private void init_(Bundle savedInstanceState) {
+        application = ((LocalzApp) this.getApplication());
     }
 
     private void afterSetContentView_() {
+        listView = ((ListView) findViewById(nabhack.localz.R.id.listView));
+        {
+            AdapterView<?> view = ((AdapterView<?> ) findViewById(nabhack.localz.R.id.listView));
+            if (view!= null) {
+                view.setOnItemClickListener(new OnItemClickListener() {
+
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        listViewClicked(position);
+                    }
+
+                }
+                );
+            }
+        }
+        setupView();
     }
 
     @Override

@@ -9,8 +9,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import com.googlecode.androidannotations.api.SdkVersionHelper;
+import nabhack.localz.LocalzApp;
+import nabhack.localz.R.id;
 import nabhack.localz.R.layout;
 
 public final class DealDetailsActivity_
@@ -26,9 +31,12 @@ public final class DealDetailsActivity_
     }
 
     private void init_(Bundle savedInstanceState) {
+        application = ((LocalzApp) this.getApplication());
     }
 
     private void afterSetContentView_() {
+        viewPager = ((ViewPager) findViewById(id.pager));
+        setupView();
     }
 
     @Override
@@ -47,6 +55,14 @@ public final class DealDetailsActivity_
     public void setContentView(View view) {
         super.setContentView(view);
         afterSetContentView_();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (((SdkVersionHelper.getSdkInt()< 5)&&(keyCode == KeyEvent.KEYCODE_BACK))&&(event.getRepeatCount() == 0)) {
+            onBackPressed();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     public static DealDetailsActivity_.IntentBuilder_ intent(Context context) {
