@@ -2,7 +2,7 @@ package nabhack.localz.activity;
 
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
-import nabhack.localz.adaptor.DealAdaptor;
+import nabhack.localz.adapter.DealAdapter;
 import nabhack.localz.models.Deal;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -29,7 +29,7 @@ public class DealSummaryActivity extends Activity {
 	
 	@AfterViews
     void setupView() {
-		listView.setAdapter(new DealAdaptor(this, R.layout.deal_list_item, R.id.title, application.getDealsOnOffer()));  
+		listView.setAdapter(new DealAdapter(this, R.layout.deal_list_item, R.id.title, application.getDealsOnOffer()));  
 
 		
     }

@@ -32,41 +32,28 @@ public class DealDetailsFragment extends Fragment {
 	@ViewById(R.id.details)
 	TextView details;
 	
+	@ViewById(R.id.title)
+	TextView title;
+	
 	@ViewById(R.id.remaining)
 	TextView remaining;
+	
+	private Deal deal;
 
 	public DealDetailsFragment() {
 	}
 
+	public void setDeal(Deal deal) {
+		this.deal = deal;
+	}
+
 	@AfterViews
 	void setupView() {
-		Deal deal = application.getCurrentDeal();
 		details.setText(deal.getDescription());
+		title.setText(deal.getTitle());
 		ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
 		remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO: Include time remaining
-		fixNoRectBasedTestNodeFoundProblem();
 	}
 
 
-	/**
-	 * Getting this:
-	 * "E/webcoreglue(21690): Should not happen: no rect-based-test nodes found"
-	 * in log See
-	 * http://stackoverflow.com/questions/12090899/android-webview-jellybean
-	 * -should-not-happen-no-rect-based-test-nodes-found
-	 */
-	void fixNoRectBasedTestNodeFoundProblem() {
-		image.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View view, MotionEvent event) {
-
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					int temp_ScrollY = view.getScrollY();
-					view.scrollTo(view.getScrollX(), view.getScrollY() + 1);
-					view.scrollTo(view.getScrollX(), temp_ScrollY);
-				}
-
-				return false;
-			}
-		});
-	}
 }

@@ -1,4 +1,4 @@
-package nabhack.localz.adaptor;
+package nabhack.localz.adapter;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class DealAdaptor extends ArrayAdapter<Deal> {
+public class DealAdapter extends ArrayAdapter<Deal> {
 	protected List<Deal> deals;
 	protected int itemViewId;
 	
-	public DealAdaptor(Context context, int resource,
+	public DealAdapter(Context context, int resource,
 			int textViewResourceId, List<Deal> deals) {
 		super(context, resource, textViewResourceId, deals);
 		this.deals = deals;

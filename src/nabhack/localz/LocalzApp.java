@@ -67,10 +67,19 @@ public class LocalzApp extends Application {
 		dealsOnOffer.add(new Deal("Gum Drops Ace of Spades", "15%", IMAGE_URL, DESC));
 		dealsOnOffer.add(new Deal("Master Series Dark Nadir", "16%", IMAGE_URL, DESC));		
 	}
+	
 	/**
 	 * @return the dealsOnOffer
 	 */
 	public List<Deal> getDealsOnOffer() {
 		return dealsOnOffer;
+	}
+	
+	public Deal getDeal(int position) {
+		return dealsOnOffer.get(position);
+	}
+		
+	public int getTotalDealsOnOffer() {
+		return dealsOnOffer.size();
 	}
 }

@@ -50,7 +50,7 @@ public class DealDetailsActivity extends FragmentActivity {
 		
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int position) {
-				application.setCurrentDeal(application.getDealsOnOffer().get(position)); 
+				application.setCurrentDeal(application.getDeal(position)); 
 			}
 			public void onPageScrolled(int arg0, float arg1, int arg2) { }
 			public void onPageScrollStateChanged(int arg0) { }
@@ -70,7 +70,8 @@ public class DealDetailsActivity extends FragmentActivity {
 
 		@Override
 		public Fragment getItem(int position) {
-			Fragment fragment = new DealDetailsFragment_();
+			DealDetailsFragment fragment = new DealDetailsFragment_();
+			fragment.setDeal(application.getDeal(position));
 			return fragment;
 		}
 
