@@ -1,0 +1,132 @@
+<!--  PLACE ALL ERROR, INFO, WARNING MESSAGES HERE -->
+
+<resources>
+
+    <!--  Error Messages  -->    
+    <string name="nab_warning_loging_off_during_registration_header">Registration incomplete</string>
+    <string name="nab_warning_loging_off_during_registration_message">If you log out now, you\'ll have to start the registration process again next time.</string>
+    <string name="nab_not_available_during_pilot">Not yet available. Coming in a future release.</string>
+    <string name="nab_msg_error_incorrect_format_nabid">NAB ID has incorrect format</string>
+    <string name="nab_msg_error_incorrect_format_password">Password has incorrect format</string>
+    <string name="nab_msg_error_passcode_not_match">Entered passcodes don\'t match. Please try again.</string>
+   	<string name="nab_choose_default_kissaccount_error_account_not_selected">Please choose an account</string>
+   	<string name="nab_logout_message_inactivity_timeout">You\'ve been logged out due to inactivity. Please login again.</string>
+   	<string name="nab_logout_message_inactivity_timeout_withoutlogin">Your NAB Flik session has timed out. Please try again.</string>
+    <string name="nab_msg_error_incorrect_email_address">Email address is invalid.</string>
+    <string name="nab_msg_error_incorrect_format_email_code">Email code must be 6 alpha numeric characters long.</string>
+   	<string name="nab_payment_money_amount_more_than_available_balance">Insufficient funds. Please either reduce the amount or visit Internet Banking to update your account balance.</string>
+   	<string name="nab_payment_money_amount_zero">Amount must be more than $0.00.</string>
+	<string name="nab_msg_email_or_mobile_incorrect_format">Invalid email address or Australian mobile number. Please update and try again.</string>
+    <string name="nab_msg_contact_point_email_or_mobile_incorrect_format">{contact_point} is an invalid email address or Australian mobile number. Please update and try again.</string>      
+	<string name="nab_msg_payment_money_max_amount_exceeded">You\'ve entered an amount which is larger than the limit of {max_amount}. Please modify the amount.</string>
+	<string name="nab_msg_payment_money_no_requests_sent">No requests have been sent. Continue?</string>
+	<string name="nab_msg_payment_money_no_payment_sent">No payment has been sent. Continue?</string>
+	<string name="msg_error_passcode_simple">Invalid 4 digit passcode. Please avoid sequential (1234 or 4321) or repeating numbers (1111).</string>
+	<string name="nab_msg_nfc_error_message_header_text">NFC error</string>
+	<string name="nab_msg_error_qr_code_invalid_data">The QR code you scanned does not represent valid data.</string>
+	<string name="nab_msg_error_incorrect_format_password">Password has incorrect format.</string>
+    <string name="nab_msg_error_incorrect_format_sms_code">SMS code must be 6 digits long.</string>
+    <string name="nab_msg_terms_and_conditions_loading_error">An error occurred while loading the terms of use. Try again?</string>
+    <string name="nab_msg_error_peforming_device_check">Error occurred while attempting to perform device check. Please try again.</string>
+    <string name="nab_msg_error_network_error">Please check your connection settings. To use this application, you must be connected to a Wi-Fi or mobile data network.</string>
+    <string name="nab_msg_user_not_registered_for_sms">To use NAB Flik you must be registered for SMS security. Please call 1300 651 656 to enable and try registering again.</string>
+    <string name="nab_msg_error_no_account_can_be_set_as_default">Unfortunately, you don\'t have an account that can be used for NAB Flik. Please contact NAB on 132265 or visit www.nab.com.au to open a transaction account so you can use NAB Flik to send and receive money.</string>
+    <string name="nab_msg_error_nfc_invalid">NFC token could\'nt be read.</string>
+    <string name="nab_msg_error_nfc_server_error">An error occurred. Please try the NFC transfer again.</string>
+    <string name="nab_msg_error_nfc_not_registered">You must be registered to use NFC.</string>
+    <string name="nab_msg_error_nfc_login_not_complete">Please first set a preferred account to continue with the payment process.</string>
+    <string name="nab_msg_error_nfc_not_registered">You must be registered to use NFC.</string>
+    <string name="nab_msg_error_token_details_failed_retry">An error occurred while obtaining payment details. Would you like to retry?</string>
+    <string name="nab_msg_error_obtaining_application_attributes">Unable to connect to NAB Flik. Please try again later.</string>
+    <string name="nab_msg_error_application_unavailable">NAB Flik is temporarily unavailable, please try again later.</string>
+    <string name="nab_msg_error_failed_to_send_request_money">Failed to send the request to the following:</string>
+    <string name="nab_msg_error_failed_to_post_to_facebook_wall">There was an error sending your post. Do you want to retry?</string>
+    <string name="nab_msg_error_failed_to_load_url">There was an error loading the web page. Do you want to retry?</string>
+    <string name="nab_msg_error_passcode_not_enabled">Passcode not enabled on this device. Please login using your NAB ID and password.</string>
+    <string name="nab_screenshot_failed_message">Unable to save screenshot.</string>
+    <string name="nab_screenshot_failed_no_more_space_message">Memory full. Unable to save receipt screenshot.</string>
+    <string name="nab_error_invalid_verification_code_msg">Verification code incorrect. Please try again.</string>
+    <string name="nab_error_blocked_verification_code_msg">Verification code incorrect. Maximum number of attempts has been reached. Please use "Request the code again" to obtain a new code.</string>
+
+    <!-- Info Messages -->
+    <string name="nab_msg_error_incorrect_format_nab_id">NAB ID has incorrect format</string>
+    <string name="nab_nab_id_has_devices_registered_dialog_message">The NAB ID you specified already has a device registered for NAB Flik. If you proceed, this will invalidate your other device registration. Do you want to proceed?</string>
+    <string name="nab_passcode_activation_passcode_blocked_message">The NAB passcode you previously set is currently locked due to multiple incorrect attempts. You can continue the registration process and use your NAB ID for login purposes. Reset your passcode later by using the “forgot your passcode” link.</string>
+    <string name="nab_passcode_activation_incorrect_passcode_message">Passcode entered was incorrect. Your passcode has been locked to multiple incorrect attempts. You can continue the registration process and use your NAB ID for login purposes. Reset your passcode later by using the “forgot your passcode” link.</string>
+    <string name="nab_passcode_activation_wrong_passcode_message">Passcode entered was incorrect.</string>  
+    <string name="nab_passcode_skip_passcode">Are you sure you want to continue without a passcode? You can still login using your NAB ID and password, and can set a passcode later in settings.</string>
+    <string name="nab_password_locked_message">Your NAB Internet Banking password has been locked due to multiple incorrect attempts. You can reset your password in Internet Banking.</string>
+    <string name="nab_passcode_locked_message">Your passcode has been locked due to multiple incorrect attempts. You can login using your NAB ID, or reset your passcode using the “forgot your passcode” link.</string>
+    <string name="nab_login_invalid_credentials">User credentials incorrect. Note that you need to be the user who registered for NAB Flik on this device.</string>
+    <string name="nab_msg_info_resend_sms_code">A new SMS verification code has been sent to your mobile.</string>
+    <string name="nab_msg_info_payment_money_amount_zero">Amount must be more than $0.00.</string>  
+    <string name="nab_msg_info_confirm_accepting_request">You\'re about to make a payment of {amount} to {name}. Proceed?</string>  
+    <string name="nab_msg_info_confirm_operation">Your request has been completed successfully</string>
+    <string name="nab_msg_application_crashed">NAB Flik has an unrecoverable error. Please login again.</string>
+    <string name="nab_msg_force_upgrade">The current version of NAB Flik is no longer supported. Please update the application in Google Play.</string>
+    <string name="nab_msg_optional_upgrade">There\'s a newer version of the NAB Flik application. Do you want to upgrade to the latest version?</string>
+    <string name="nab_msg_hide_facebook_option">You can enable Facebook payment anytime from the settings menu.</string>
+    <string name="nab_toast_claim_code_copied">Claim code copied</string>
+    <string name="nab_msg_facebook_post_on_wall">Your payment has been sent in Flik, but your contact will not be notified on Facebook. Are you sure you want to cancel?</string>
+
+    <!--  Loading/Submit Messages -->
+    <string name="auth_dialog_title">Connecting</string>
+    <string name="auth_dialog_message">Connecting to NAB</string>
+    <string name="nab_choose_default_kissaccount_dialog_title">Connecting</string>
+    <string name="nab_choose_default_kissaccount_dialog_message">Setting up preferred account</string> 
+    <string name="nab_reg_nab_email_dialog_title">Connecting</string>
+    <string name="nab_reg_nab_email_dialog_message">Connecting to NAB</string>  
+    <string name="nab_terms_and_conditions_loading_dialog_title">Connecting</string>
+    <string name="nab_terms_and_conditions_loading_dialog_message">Loading terms of use</string>   
+    <string name="nab_terms_and_conditions_accepting_dialog_title">Connecting</string>
+    <string name="nab_terms_and_conditions_accepting_dialog_message">Accepting terms of use</string>  
+   	<string name="nab_msg_nfc_not_enabled">NFC isn\'t enabled on your device. Please enable in device settings to make NFC payments</string>
+    <string name="nab_msg_nfc_still_not_enabled">NFC still not enabled, please choose another payment method or enable NFC in device settings.</string>
+    <string name="nab_send_money_confirmation_dialog_title">Connecting</string>
+    <string name="nab_send_money_confirmation_dialog_message">Submitting payment details</string>   
+    <string name="nab_send_money_qr_code_nfc_dialog_title">Connecting</string>
+    <string name="nab_send_money_qr_code_nfc_dialog_message">Connecting to NAB</string>
+    <string name="nab_request_money_confirmation_dialog_title">Connecting</string>
+    <string name="nab_request_money_confirmation_dialog_message">Submitting request details</string>  
+    <string name="nab_request_money_change_method_confirmation_dialog_title">Connecting</string>
+    <string name="nab_request_money_change_method_confirmation_dialog_message">Connecting to NAB</string>   
+    <string name="nab_request_money_contact_dialog_title">Connecting</string>
+    <string name="nab_request_money_contact_dialog_message">Connecting to NAB</string>  
+    <string name="nab_retrieving_payment_details_dialog_title">Connecting</string>
+    <string name="nab_retrieving_payment_details_dialog_message">Retrieving payment details</string>
+    <string name="nab_verify_device_dialog_title">Connecting</string>
+    <string name="nab_verify_device_dialog_message">Connecting to NAB</string> 
+    <string name="nab_device_check_dialog_title">Connecting</string>
+    <string name="nab_device_check_dialog_message">Performing device check</string>
+    <string name="nab_obtaining_token_details_dialog_title">Connecting</string>
+    <string name="nab_obtaining_token_details_dialog_message">Obtaining payment details</string>   
+    <string name="nab_payment_detail_confirmation_dialog_title">Connecting</string>
+   	<string name="nab_payment_detail_confirmation_dialog_message">Performing transaction</string>
+    <string name="nab_appattributes_dialog_title">Connecting</string>
+    <string name="nab_appattributes_dialog_message">Checking application attributes</string>
+    <string name="nab_deregister_dialog_message">De-registering device</string>
+    
+     <!-- Warning Messages -->
+   	<string name="nab_warning_loging_off_during_registration">You\'ve chosen to quit the application during registration. Information you\'ve provided won\'t be saved. Do you wish to quit?</string>
+    <string name="nab_warning_loging_off_main">Are you sure you want to logout?</string>
+   	<string name="nab_warning_loging_off_during_registration_registered">You\'ve registered for NAB Flik. Are you sure you want to logout?</string>
+    <string name="nab_warning_send_amount_exceeds_1000">You can\'t send an amount greater than $1,000 using Flik. Please update the amount and try again.</string>
+    <string name="nab_warning_request_amount_exceeds_1000">You can\'t request an amount greater than $1,000 using Flik. Please update the amount and try again.</string>
+    <string name="nab_warning_request_acceptor_amount_exceeds_1000">You can\'t pay an amount greater than $1,000 using Flik. Please update the amount and try again.</string>
+    
+   	<!-- WebView Loading -->
+    <string name="help_heading">Help</string>
+   	<string name="terms_and_conditions_heading">Terms of use</string>
+   	<string name="online_help_heading">Online help</string>
+   	<string name="find_out_more_heading">NAB Classic Banking</string>
+   	<string name="privacy_policy_heading">Privacy &amp; Security</string>
+   	<string name="contact_us_heading">Contact us</string>
+    
+   	<!-- URL -->
+   	<string name="help_url">http://www.nab.com.au/static/mobile/flik/help.html</string>
+   	<string name="find_out_more_quick_payment_url">http://www.nab.com.au/wps/wcm/connect/nab/mobile/smart/personal/1/1/1</string>
+   	<string name="find_out_more_welcome_url">http://www.nab.com.au/static/mobile/flik/overview.html</string>
+   	<string name="privacy_policy_url">http://www.nab.com.au/static/mobile/flik/security-privacy.html</string>
+   	<string name="contact_us_url">https://www.nab.com.au/wps/wcm/connect/nab/mobile/smart/65/1</string>
+   	<string name="quick_claim_online_help_url">http://www.nab.com.au/wps/wcm/connect/nab/Internet_Banking_Help/home/1/6</string>
+</resources>

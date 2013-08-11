@@ -9,4 +9,35 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
 
+    <!-- Facebook -->
+	<string name="app_id">102827343249035</string>
+	<string name="facebook_title">Facebook</string>
+	<string name="facebook_disable_confirm_text">Are you sure you want to disable Facebook?</string>
+	<string name="facebook_renew_session_text">Your Facebook session has been lost. Would you like to login now?</string>
+	<string name="facebook_saving_dialog_text">Saving Facebook settings</string>
+	<string name="facebook_error_title">Facebook error</string>
+	<string name="facebook_enable_for_photo_text">Enable Facebook payment to display your Facebook profile picture.</string>
+	<string name="facebook_error_id_already_exists">Failed to enable Facebook payment because your Facebook account is already registered under a different user.</string>
+	<string name="facebook_error_id_invalid">Error authenticating with Facebook. Please try again.</string>
+	<string name="facebook_not_you">(not you?)</string>
+	<string name="facebook_session_lost">You\'ve been logged out of Facebook.</string>
+    	
+	<!-- Facebook -->
+	<string name="facebook_share_to_wall_button_text">Share to wall</string>
+	<string name="facebook_share_to_wall_name">Localz</string>
+	<string name="facebook_share_to_wall_caption"></string>
+	<string name="facebook_share_to_wall_link"></string>
+	<string name="facebook_share_to_wall_description"></string>
+	<string name="facebook_share_to_wall_picture"></string>
+	
+   	<string name="common_continue_button_text">Continue</string>
+    <string name="common_cancel_button_text">Cancel</string>
+    <string name="common_OK_button_text">OK</string>
+    <string name="common_later_button_text">Later</string>
+    <string name="common_retry_button_text">Retry</string>
+    <string name="common_close_button_text">Close</string>
+    <string name="common_done_button_text">Done</string>
+    <string name="common_next_button_text">Next</string>
+    <string name="common_unavailable_text">Unavailable</string>
+	
 </resources>
