@@ -5,7 +5,9 @@ import nabhack.localz.R;
 import nabhack.localz.adaptor.DealAdaptor;
 import nabhack.localz.models.Deal;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.widget.ListView;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -23,10 +25,13 @@ public class DealSummaryActivity extends Activity {
 
 	@App
 	LocalzApp application;
+
 	
 	@AfterViews
     void setupView() {
 		listView.setAdapter(new DealAdaptor(this, R.layout.deal_list_item, R.id.title, application.getDealsOnOffer()));  
+
+		
     }
 	
 	@ItemClick(R.id.listView)

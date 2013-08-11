@@ -29,11 +29,13 @@ public class DealDetailsFragment extends Fragment {
 	LocalzApp application;
 
 	@ViewById(R.id.image)
-	WebView image;
+	WebView image;  // Should be ImageView. Use WebView to get things going quickly! 
 
 	@ViewById(R.id.details)
 	TextView details;
-
+	
+	@ViewById(R.id.remaining)
+	TextView remaining;
 
 	public DealDetailsFragment() {
 	}
@@ -43,6 +45,7 @@ public class DealDetailsFragment extends Fragment {
 		Deal deal = application.getCurrentDeal();
 		details.setText(deal.getDescription());
 		image.loadUrl(deal.getDescImgs()[0]);
+		remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO: Include time remaining
 		fixNoRectBasedTestNodeFoundProblem();
 	}
 

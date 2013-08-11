@@ -31,8 +31,9 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
-        details = ((TextView) findViewById(nabhack.localz.R.id.details));
         image = ((WebView) findViewById(nabhack.localz.R.id.image));
+        details = ((TextView) findViewById(nabhack.localz.R.id.details));
+        remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
         setupView();
     }
 
