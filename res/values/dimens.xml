@@ -3,5 +3,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    
+   	<dimen name="side_menu_offset">50dp</dimen>
+    <dimen name="side_menu_list_padding">8dp</dimen>
+    <dimen name="side_menu_shadow_width">6dp</dimen>
+    <item name="side_menu_hide_velocity" type="integer" format="integer">4000</item>
+    <item name="horizontal_list_scroll_velocity" type="integer" format="integer">200</item>
 
 </resources>

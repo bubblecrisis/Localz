@@ -9,11 +9,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.googlecode.androidannotations.api.SdkVersionHelper;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R.layout;
 
@@ -69,6 +71,14 @@ public final class DealSummaryActivity_
     public void setContentView(View view) {
         super.setContentView(view);
         afterSetContentView_();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (((SdkVersionHelper.getSdkInt()< 5)&&(keyCode == KeyEvent.KEYCODE_BACK))&&(event.getRepeatCount() == 0)) {
+            onBackPressed();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     public static DealSummaryActivity_.IntentBuilder_ intent(Context context) {

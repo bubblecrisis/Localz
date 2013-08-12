@@ -31,10 +31,10 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
+        remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
         details = ((TextView) findViewById(nabhack.localz.R.id.details));
         title = ((TextView) findViewById(nabhack.localz.R.id.title));
         image = ((ImageView) findViewById(nabhack.localz.R.id.image));
-        remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
         setupView();
     }
 
