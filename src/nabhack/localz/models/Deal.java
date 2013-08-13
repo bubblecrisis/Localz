@@ -60,6 +60,14 @@ public class Deal {
 		this.description = description;
 	}
 	
+	public Deal(String title, String savings, String image, String description, float lat, float lng) {
+		this.descImgs = new String[] { image };
+		this.title = title;
+		this.savings = savings;
+		this.description = description;
+		this.altClaimLocation = new Location(lat, lng);
+	}
+	
 	public String toString() {
 		return title;
 	}

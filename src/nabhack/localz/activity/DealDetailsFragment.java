@@ -3,6 +3,8 @@ package nabhack.localz.activity;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
+import nabhack.localz.models.Location;
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,9 +12,16 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
 import com.googlecode.androidannotations.annotations.EFragment;
+import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -27,17 +36,17 @@ public class DealDetailsFragment extends Fragment {
 	LocalzApp application;
 
 	@ViewById(R.id.image)
-	ImageView image; 
+	ImageView image;
 
 	@ViewById(R.id.details)
 	TextView details;
-	
+
 	@ViewById(R.id.title)
 	TextView title;
-	
+
 	@ViewById(R.id.remaining)
 	TextView remaining;
-	
+
 	private Deal deal;
 
 	public DealDetailsFragment() {
@@ -52,8 +61,9 @@ public class DealDetailsFragment extends Fragment {
 		details.setText(deal.getDescription());
 		title.setText(deal.getTitle());
 		ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
-		remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO: Include time remaining
+		remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO:
+																	// Include
+																	// time
+																	// remaining
 	}
-
-
 }

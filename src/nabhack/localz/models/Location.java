@@ -2,19 +2,24 @@ package nabhack.localz.models;
 
 public class Location {
 
-	private long lat;
-	private long lng;
+	private float lat;
+	private float lng;
 	
-	public long getLat() {
+	public Location(float lat, float lng) {
+		this.lat = lat;
+		this.lng = lng;
+	}
+	
+	public float getLat() {
 		return lat;
 	}
-	public void setLat(long lat) {
+	public void setLat(float lat) {
 		this.lat = lat;
 	}
-	public long getLng() {
+	public float getLng() {
 		return lng;
 	}
-	public void setLng(long lng) {
+	public void setLng(float lng) {
 		this.lng = lng;
 	}
 }

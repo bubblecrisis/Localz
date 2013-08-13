@@ -3,6 +3,7 @@ package nabhack.localz.activity;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
+import nabhack.localz.models.Location;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -10,9 +11,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_deal_details)
@@ -38,6 +46,12 @@ public class DealDetailsActivity extends FragmentActivity {
 	@ViewById(R.id.pager)
 	ViewPager viewPager;
 
+	
+	@FragmentById(R.id.shop_map)
+	SupportMapFragment mapFragment;
+
+	private GoogleMap mMap;
+	
 	@AfterViews
 	protected void setupView() {
 		// Create the adapter that will return a fragment for each of the three
@@ -51,10 +65,14 @@ public class DealDetailsActivity extends FragmentActivity {
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int position) {
 				application.setCurrentDeal(application.getDeal(position)); 
+				moveCameraToPositionAndAddMarker();
 			}
 			public void onPageScrolled(int arg0, float arg1, int arg2) { }
 			public void onPageScrollStateChanged(int arg0) { }
 		});
+		
+		setUpMapIfNeeded();
+		setUpMap();
 	}
 	
 	
@@ -88,5 +106,36 @@ public class DealDetailsActivity extends FragmentActivity {
 		private Deal getDeal(int position) {
 			return application.getDealsOnOffer().get(position);						
 		}
+	}
+	
+	private void setUpMapIfNeeded() {
+		if (mMap == null) {
+			mMap = mapFragment.getMap();
+		}
+	}
+
+	private void setUpMap() {
+		mMap.setIndoorEnabled(true);
+		mMap.setMyLocationEnabled(true);
+
+		application.setCurrentDeal(application.getDeal(0));
+		moveCameraToPositionAndAddMarker();
+	}
+
+	private void moveCameraToPositionAndAddMarker() {
+		mMap.clear();
+		LatLng dealLatLng = new LatLng(application.getCurrentDeal().getAltClaimLocation().getLat(),
+				application.getCurrentDeal().getAltClaimLocation().getLng());
+
+		mMap.addMarker(new MarkerOptions().position(dealLatLng).title(
+				application.getCurrentDeal().getTitle())).showInfoWindow();
+
+		CameraPosition cameraPosition = new CameraPosition.Builder()
+				.target(dealLatLng).zoom(5).tilt(60) // Sets the tilt of the
+														// camera
+														// to 60 degrees
+				.build(); // Creates a CameraPosition from the builder
+		mMap.animateCamera(CameraUpdateFactory
+				.newCameraPosition(cameraPosition));
 	}
 }

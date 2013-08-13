@@ -9,13 +9,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.googlecode.androidannotations.api.SdkVersionHelper;
 import nabhack.localz.LocalzApp;
-import nabhack.localz.R.id;
 import nabhack.localz.R.layout;
 
 public final class DealDetailsActivity_
@@ -35,7 +37,8 @@ public final class DealDetailsActivity_
     }
 
     private void afterSetContentView_() {
-        viewPager = ((ViewPager) findViewById(id.pager));
+        viewPager = ((ViewPager) findViewById(nabhack.localz.R.id.pager));
+        mapFragment = ((SupportMapFragment) findSupportFragmentById(nabhack.localz.R.id.shop_map));
         setupView();
     }
 
@@ -67,6 +70,14 @@ public final class DealDetailsActivity_
 
     public static DealDetailsActivity_.IntentBuilder_ intent(Context context) {
         return new DealDetailsActivity_.IntentBuilder_(context);
+    }
+
+    private Fragment findSupportFragmentById(int id) {
+        if (!(this instanceof FragmentActivity)) {
+            return null;
+        }
+        FragmentActivity activity_ = ((FragmentActivity) this);
+        return activity_.getSupportFragmentManager().findFragmentById(id);
     }
 
     public static class IntentBuilder_ {
