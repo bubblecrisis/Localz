@@ -119,7 +119,9 @@ public class FacebookFragment extends Fragment {
 		permissions.add("publish_stream");
 		openRequest.setPermissions(permissions);
 		openRequest.setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO);
-		Session session = new Session.Builder(getActivity()).setApplicationId(getString(R.string.app_id)).build();
+		String appId = getString(R.string.app_id);
+		Log.d(TAG, "application id" + appId);
+		Session session = new Session.Builder(getActivity()).setApplicationId(appId).build();
 		Session.setActiveSession(session);
 		session.openForPublish(openRequest);
 	}
