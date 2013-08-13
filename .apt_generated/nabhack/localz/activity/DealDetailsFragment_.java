@@ -33,11 +33,11 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
-        title = ((TextView) findViewById(nabhack.localz.R.id.title));
-        details = ((TextView) findViewById(nabhack.localz.R.id.details));
-        faceBookShareBtn = ((Button) findViewById(nabhack.localz.R.id.share_facebook_btn));
         remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
+        details = ((TextView) findViewById(nabhack.localz.R.id.details));
+        title = ((TextView) findViewById(nabhack.localz.R.id.title));
         image = ((ImageView) findViewById(nabhack.localz.R.id.image));
+        faceBookShareBtn = ((Button) findViewById(nabhack.localz.R.id.share_facebook_btn));
         {
             View view = findViewById(nabhack.localz.R.id.share_facebook_btn);
             if (view!= null) {
