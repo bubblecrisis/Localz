@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp" >
+
+    <ImageView
+        android:id="@+id/side_menu_payment_status_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/ic_send_success" />
+
+    <TextView
+        android:id="@+id/side_menu_payment_deal_summary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@+id/side_menu_payment_status_image"
+        android:paddingLeft="2dp"
+        android:text="Samsung Galaxy S4"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/side_menu_payment_deal_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/side_menu_payment_deal_summary_text"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@+id/side_menu_payment_status_image"
+        android:paddingLeft="2dp"
+        android:text="10 June 2013"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/side_memu_payment_status_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible" />
+
+</RelativeLayout>

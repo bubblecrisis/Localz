@@ -6,9 +6,7 @@ import nabhack.localz.models.Deal;
 import nabhack.localz.models.Location;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
 import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.ViewById;
@@ -47,6 +46,10 @@ public class DealDetailsFragment extends Fragment {
 	@ViewById(R.id.remaining)
 	TextView remaining;
 
+	
+	@ViewById(R.id.share_facebook_btn)
+	Button faceBookShareBtn;
+	
 	private Deal deal;
 
 	public DealDetailsFragment() {
@@ -65,5 +68,15 @@ public class DealDetailsFragment extends Fragment {
 																	// Include
 																	// time
 																	// remaining
+	}
+
+	@Click(R.id.share_facebook_btn)
+	void clickOnShareFaceBookBtn() {
+		DealDetailsActivity dealDetailsActivity = (DealDetailsActivity) getActivity();
+		dealDetailsActivity.isLoggingIn = true;
+		dealDetailsActivity.isNewFacebookLogin = true;
+		dealDetailsActivity.facebookFragment.logoff();
+		dealDetailsActivity.facebookFragment.loginViaWebDialog();
+		//dealDetailsActivity.publishStory();
 	}
 }

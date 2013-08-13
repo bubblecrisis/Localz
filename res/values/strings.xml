@@ -10,7 +10,7 @@
     <string name="title_section3">Section 3</string>
 
     <!-- Facebook -->
-	<string name="app_id">102827343249035</string>
+	<string name="app_id">207298689393710</string>
 	<string name="facebook_title">Facebook</string>
 	<string name="facebook_disable_confirm_text">Are you sure you want to disable Facebook?</string>
 	<string name="facebook_renew_session_text">Your Facebook session has been lost. Would you like to login now?</string>
@@ -39,5 +39,12 @@
     <string name="common_done_button_text">Done</string>
     <string name="common_next_button_text">Next</string>
     <string name="common_unavailable_text">Unavailable</string>
-	
+
+    <!--  Side Menu  -->
+    <string name="side_menu_settings_text">Settings</string>
+    <string name="side_menu_contact_nab_text">Contact us</string>
+    <string name="side_menu_payment_status_text">Payment status</string>
+    <string name="side_menu_logout_text">Logout</string>
+  	<string name="side_menu_header_text">Secured Deals</string>
+    
 </resources>

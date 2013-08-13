@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp" >
+
+    <ImageView
+        android:id="@+id/composite_list_link_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingLeft="3dp"
+        android:src="@drawable/ic_notify_settings" />
+
+    <TextView
+        android:id="@+id/composite_list_link_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/composite_list_link_image"
+        android:paddingLeft="3dp"
+        android:text="Settings" />
+
+    <View
+        android:id="@+id/side_memu_link_divider"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+</RelativeLayout>
