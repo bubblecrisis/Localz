@@ -14,6 +14,7 @@ public class WebServiceController {
 	private static final String URL_BASE = "http://dev-api-localz.herokuapp.com";
 	private static final String URL_DEVICE_REGISTER = "/register";
 	private static final String URL_DEVICE_SIGN_IN = "/deviceSignIn";
+	private static final String URL_DEVICE_SETTINGS = "/devices/{deviceId}";
 
 	private static WebServiceController instance;
 	private HttpClientManager httpClientManager;
@@ -57,7 +58,7 @@ public class WebServiceController {
 			String mobileNumber, String appVer, String area,
 			Map<String, String> filter) {
 
-		String urlRootString = URL_BASE + URL_DEVICE_REGISTER;
+		String url = URL_BASE + URL_DEVICE_REGISTER;
 		int serverResponse = HttpURLConnection.HTTP_OK;
 		StringBuffer responseBuffer = new StringBuffer();
 
@@ -69,9 +70,8 @@ public class WebServiceController {
 				+ "\"," + "filter:\"" + filter.toString() + "\"}}";
 
 		try {
-			serverResponse = this.httpClientManager.connectToWebServer(
-					urlRootString, HttpClientManager.HTTP_METHOD.POST, params,
-					responseBuffer);
+			serverResponse = this.httpClientManager.connectToWebServer(url,
+					HttpClientManager.HTTP_METHOD.POST, params, responseBuffer);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,7 +82,7 @@ public class WebServiceController {
 
 	public Map<String, String> deviceSignIn(String deviceId, String deviceKey) {
 
-		String urlRootString = URL_BASE + URL_DEVICE_SIGN_IN;
+		String url = URL_BASE + URL_DEVICE_SIGN_IN;
 		int serverResponse = HttpURLConnection.HTTP_OK;
 		StringBuffer responseBuffer = new StringBuffer();
 
@@ -90,9 +90,50 @@ public class WebServiceController {
 				+ deviceKey + "\"}";
 
 		try {
-			serverResponse = this.httpClientManager.connectToWebServer(
-					urlRootString, HttpClientManager.HTTP_METHOD.POST, params,
-					responseBuffer);
+			serverResponse = this.httpClientManager.connectToWebServer(url,
+					HttpClientManager.HTTP_METHOD.POST, params, responseBuffer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return processServerResponse(serverResponse, responseBuffer.toString());
+	}
+
+	public Map<String, String> getDeviceSettings(String deviceId,
+			boolean isPushEnabled, Map<String, String> filter) {
+
+		String url = URL_BASE
+				+ URL_DEVICE_SETTINGS.replace("{deviceId}", deviceId);
+		int serverResponse = HttpURLConnection.HTTP_OK;
+		StringBuffer responseBuffer = new StringBuffer();
+
+		try {
+			serverResponse = this.httpClientManager.connectToWebServer(url,
+					HttpClientManager.HTTP_METHOD.POST, null, responseBuffer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return processServerResponse(serverResponse, responseBuffer.toString());
+	}
+
+	public Map<String, String> postDeviceSettings(String deviceId,
+			boolean isPushEnabled, String pushId, Map<String, String> filter) {
+
+		String url = URL_BASE
+				+ URL_DEVICE_SETTINGS.replace("{deviceId}", deviceId);
+		int serverResponse = HttpURLConnection.HTTP_OK;
+		StringBuffer responseBuffer = new StringBuffer();
+
+		String params = "{notification:{isPushEnabled:" + isPushEnabled + ","
+				+ "pushId:\"" + pushId + ",},filter:{" + filter.toString()
+				+ "}}";
+
+		try {
+			serverResponse = this.httpClientManager.connectToWebServer(url,
+					HttpClientManager.HTTP_METHOD.POST, params, responseBuffer);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
