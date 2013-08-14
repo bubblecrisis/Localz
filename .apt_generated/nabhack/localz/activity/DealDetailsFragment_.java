@@ -32,25 +32,10 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
-        details = ((TextView) findViewById(nabhack.localz.R.id.details));
-        title = ((TextView) findViewById(nabhack.localz.R.id.title));
         image = ((ImageView) findViewById(nabhack.localz.R.id.image));
+        details = ((TextView) findViewById(nabhack.localz.R.id.details));
         remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
-        {
-            View view = findViewById(nabhack.localz.R.id.redeem_deal_btn);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        DealDetailsFragment_.this.clickOnRedeemDealBtn();
-                    }
-
-                }
-                );
-            }
-        }
+        title = ((TextView) findViewById(nabhack.localz.R.id.title));
         {
             View view = findViewById(nabhack.localz.R.id.share_facebook_btn);
             if (view!= null) {
@@ -60,6 +45,21 @@ public final class DealDetailsFragment_
                     @Override
                     public void onClick(View view) {
                         DealDetailsFragment_.this.clickOnShareFaceBookBtn();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = findViewById(nabhack.localz.R.id.redeem_deal_btn);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        DealDetailsFragment_.this.clickOnRedeemDealBtn();
                     }
 
                 }

@@ -34,9 +34,9 @@ public final class SecureDealActivity_
     }
 
     private void afterSetContentView_() {
+        details = ((TextView) findViewById(id.secure_deal_details));
         remaining = ((TextView) findViewById(id.secure_deal_remaining));
         image = ((ImageView) findViewById(id.secure_deal_image));
-        details = ((TextView) findViewById(id.secure_deal_details));
         setupView();
     }
 

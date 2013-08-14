@@ -46,5 +46,8 @@
     <string name="side_menu_payment_status_text">Payment status</string>
     <string name="side_menu_logout_text">Logout</string>
   	<string name="side_menu_header_text">Secured Deals</string>
+  
+  	<!-- Secure Deal -->
+  	<string name="secure_deal">Secure deal</string>
     
 </resources>
