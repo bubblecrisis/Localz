@@ -34,7 +34,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBhmyk6lGqjKV0LILkauUNhG1kpni8G6wI" />
+            android:value="AIzaSyBGwXGoe4jwWJv81eDxV5yjmh53fn7UEhM" />
 
         <activity
             android:name="nabhack.localz.activity.DealSummaryActivity_"

@@ -10,11 +10,21 @@
         android:layout_height="338dp"
         layout="@layout/deal_detail_item" />
 
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
 
-    <Button
-        android:id="@+id/share_facebook_btn"
-        android:text="Share on facebook" 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/share_facebook_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share on facebook" />
+
+        <Button
+            android:id="@+id/redeem_deal_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Redeem Deal" />
+    </LinearLayout>
 
 </LinearLayout>

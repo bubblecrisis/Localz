@@ -11,6 +11,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import nabhack.localz.R.id;
 import nabhack.localz.R.layout;
 
 public final class RedeemActivity_
@@ -26,9 +29,12 @@ public final class RedeemActivity_
     }
 
     private void init_(Bundle savedInstanceState) {
+        windowsManager = ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE));
     }
 
     private void afterSetContentView_() {
+        qrImageView = ((ImageView) findViewById(id.qrcode_image_view));
+        initDisplay();
     }
 
     @Override

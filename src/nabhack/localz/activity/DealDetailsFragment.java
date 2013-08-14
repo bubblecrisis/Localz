@@ -3,24 +3,15 @@ package nabhack.localz.activity;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
-import nabhack.localz.models.Location;
-import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
-import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -45,10 +36,6 @@ public class DealDetailsFragment extends Fragment {
 
 	@ViewById(R.id.remaining)
 	TextView remaining;
-
-	
-	@ViewById(R.id.share_facebook_btn)
-	Button faceBookShareBtn;
 	
 	private Deal deal;
 
@@ -79,4 +66,11 @@ public class DealDetailsFragment extends Fragment {
 		dealDetailsActivity.facebookFragment.loginViaWebDialog();
 		//dealDetailsActivity.publishStory();
 	}
+	
+	@Click(R.id.redeem_deal_btn)
+	void clickOnRedeemDealBtn() {
+		Intent intent = new Intent(getActivity(), RedeemActivity_.class);
+		startActivity(intent);
+	}
+		
 }
