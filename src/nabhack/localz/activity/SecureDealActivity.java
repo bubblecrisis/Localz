@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 @EActivity(R.layout.activity_secure_deal)
 public class SecureDealActivity extends Activity {
 
+	public static final String DEALID_INTENT_EXTRAS = "dealid";
 	private static final String TAG = "SecureDealActivity";
 	@App
 	LocalzApp application;
@@ -34,6 +36,8 @@ public class SecureDealActivity extends Activity {
 
 	@ViewById(R.id.secure_deal_remaining)
 	TextView remaining;
+	
+	String dealid="123";
 
 	public SecureDealActivity() {
 	}
@@ -58,6 +62,8 @@ public class SecureDealActivity extends Activity {
 			Toast.makeText(this, "Received NDEF message " + payload,
 					Toast.LENGTH_LONG);
 
+			// set deal id from NFC message
+			// dealid = getDealIdFromNFCPayload(payload);
 			application.setCurrentDeal(application.getDeal(3));
 			Deal deal = application.getCurrentDeal();
 			details.setText(deal.getDescription());
@@ -102,4 +108,11 @@ public class SecureDealActivity extends Activity {
 		return msgs;
 	}
 
+	void secureDeal() {
+		Intent intent = new Intent(SecureDealActivity.this, RedeemActivity_.class);
+		Bundle extras = new Bundle();
+		extras.putString(DEALID_INTENT_EXTRAS, dealid);
+		intent.putExtras(extras);
+		startActivity(intent);
+	}
 }
