@@ -11,10 +11,10 @@
         layout="@layout/deal_detail_item" />
 
 
-    <Button
+    <!-- Button
         android:id="@+id/share_facebook_btn"
         android:text="Share on facebook" 
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/-->
 
 </LinearLayout>

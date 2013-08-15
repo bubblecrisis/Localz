@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/shop_map"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="280dp"
         class="com.google.android.gms.maps.SupportMapFragment" />
 
     <android.support.v4.view.ViewPager

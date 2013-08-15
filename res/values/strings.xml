@@ -49,5 +49,10 @@
   
   	<!-- Secure Deal -->
   	<string name="secure_deal">Secure deal</string>
+  	
+  	<!-- Menu action bar -->
+  	<string name="action_share">Share</string>
     
+  	<!-- Filter -->
+  	<string name="filter_submit">Done!</string>
 </resources>

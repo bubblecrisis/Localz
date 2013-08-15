@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:id="@+id/nab_abs_home_menu_layout"
+        android:id="@+id/abs_home_menu_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -18,6 +18,13 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_menu_notifications"/>
 
+        <ImageView
+            android:id="@+id/abs_home_menu_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/content_edit"/>
     </RelativeLayout>
 
 </FrameLayout>

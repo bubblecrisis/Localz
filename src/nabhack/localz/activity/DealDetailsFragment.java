@@ -5,6 +5,7 @@ import nabhack.localz.R;
 import nabhack.localz.models.Deal;
 import nabhack.localz.models.Location;
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,10 +47,9 @@ public class DealDetailsFragment extends Fragment {
 	@ViewById(R.id.remaining)
 	TextView remaining;
 
-	
-	@ViewById(R.id.share_facebook_btn)
-	Button faceBookShareBtn;
-	
+	//@ViewById(R.id.share_facebook_btn)
+	//Button faceBookShareBtn;
+
 	private Deal deal;
 
 	public DealDetailsFragment() {
@@ -63,20 +63,32 @@ public class DealDetailsFragment extends Fragment {
 	void setupView() {
 		details.setText(deal.getDescription());
 		title.setText(deal.getTitle());
-		ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
+		
+
+		// Uncomment when data will be available online
+		//ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
+
+		// Comment next block when data available online
+		String uri = "drawable/"
+				+ deal.getDescImgs()[0].replaceFirst("[.][^.]+$", "");
+		int imageResource = getResources().getIdentifier(uri, null,
+				getActivity().getPackageName());
+		Drawable drawImage = getActivity().getResources().getDrawable(imageResource);
+		image.setImageDrawable(drawImage);
+
 		remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO:
 																	// Include
 																	// time
 																	// remaining
 	}
 
-	@Click(R.id.share_facebook_btn)
+	/*@Click(R.id.share_facebook_btn)
 	void clickOnShareFaceBookBtn() {
 		DealDetailsActivity dealDetailsActivity = (DealDetailsActivity) getActivity();
 		dealDetailsActivity.isLoggingIn = true;
 		dealDetailsActivity.isNewFacebookLogin = true;
 		dealDetailsActivity.facebookFragment.logoff();
 		dealDetailsActivity.facebookFragment.loginViaWebDialog();
-		//dealDetailsActivity.publishStory();
-	}
+		// dealDetailsActivity.publishStory();
+	}*/
 }

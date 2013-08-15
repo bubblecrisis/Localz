@@ -2,13 +2,17 @@ package nabhack.localz.activity;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.adapter.DealAdapter;
+import nabhack.localz.models.Category;
 import nabhack.localz.models.Deal;
 import nabhack.localz.utils.GCMServerUtilities;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -47,6 +51,10 @@ public class DealSummaryActivity extends FragmentActivity {
 
 	SideMenuListFragment sideMenuFragment;
 
+	DealAdapter dealAdapter;
+
+	List<Deal> filteredDeals;
+
 	GoogleCloudMessaging gcmServer;
 	String gcmRegid;
 	BroadcastReceiver notificationReceiver;
@@ -84,8 +92,10 @@ public class DealSummaryActivity extends FragmentActivity {
 
 	@AfterViews
 	void setupView() {
-		listView.setAdapter(new DealAdapter(this, R.layout.deal_list_item,
-				R.id.title, application.getDealsOnOffer()));
+		filteredDeals = application.getDealsOnOffer();
+		dealAdapter = new DealAdapter(this, R.layout.deal_list_item,
+				R.id.title, filteredDeals);
+		listView.setAdapter(dealAdapter);
 		initSideMenu();
 		initMenuOPtions();
 	}
@@ -138,6 +148,51 @@ public class DealSummaryActivity extends FragmentActivity {
 				menu.toggle();
 			}
 		});
+
+		ImageView menuIconFilter = (ImageView) findViewById(R.id.abs_home_menu_filter);
+		menuIconFilter.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(DealSummaryActivity.this,
+						FilterActivity_.class);
+				startActivityForResult(intent, 1);
+			}
+		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent arg2) {
+		if (resultCode == Activity.RESULT_OK) {
+			// return from filter
+			List<String> checkedCategories = new ArrayList<String>();
+			for (Category category : ((LocalzApp) getApplication())
+					.getCategories()) {
+				if (category.isChecked()) {
+					checkedCategories.add(category.getDealCategory());
+					Log.d(TAG,
+							"Checked Categories: " + category.getDealCategory());
+				}
+			}
+
+			List<Deal> f = new ArrayList<Deal>();
+			for (Deal deal : ((LocalzApp) getApplication()).getDealsOnOffer()) {
+				String[] dealCategories = deal.getCategories();
+				Log.d(TAG, "dealCategories: " + dealCategories);
+				for (String dCategory : dealCategories) {
+					if (checkedCategories.contains(dCategory)) {
+						f.add(deal);
+						break;
+					}
+				}
+			}
+			Log.d(TAG, "filtered list size: " + f.size());
+			dealAdapter = new DealAdapter(this, R.layout.deal_list_item,
+					R.id.title, f);
+			listView.setAdapter(dealAdapter);
+			dealAdapter.notifyDataSetChanged();
+		}
+		super.onActivityResult(requestCode, resultCode, arg2);
 	}
 
 	/**

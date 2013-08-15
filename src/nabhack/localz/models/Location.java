@@ -1,8 +1,12 @@
 package nabhack.localz.models;
 
+import com.google.gson.annotations.Expose;
+
 public class Location {
 
+	@Expose
 	private float lat;
+	@Expose
 	private float lng;
 	
 	public Location(float lat, float lng) {

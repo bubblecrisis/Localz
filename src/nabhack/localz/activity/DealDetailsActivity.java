@@ -27,7 +27,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.view.MenuItem;
 
+import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -49,8 +51,10 @@ import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.FragmentById;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
 import com.googlecode.androidannotations.annotations.ViewById;
 
+@OptionsMenu(R.menu.deal_details)
 @EActivity(R.layout.activity_deal_details)
 public class DealDetailsActivity extends FragmentActivity implements
 		IFacebookSessionCallback {
@@ -128,6 +132,16 @@ public class DealDetailsActivity extends FragmentActivity implements
 		ft.commit();
 	}
 
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		if(item.getItemId() == R.id.action_share) {
+			isLoggingIn = true;
+			isNewFacebookLogin = true;
+			facebookFragment.logoff();
+			facebookFragment.loginViaWebDialog();	
+		}
+		return super.onMenuItemSelected(featureId, item);
+	}
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the sections/tabs/pages.
@@ -276,8 +290,8 @@ public class DealDetailsActivity extends FragmentActivity implements
 	private void moveCameraToPositionAndAddMarker() {
 		mMap.clear();
 		LatLng dealLatLng = new LatLng(application.getCurrentDeal()
-				.getAltClaimLocation().getLat(), application.getCurrentDeal()
-				.getAltClaimLocation().getLng());
+				.getLocation().getLat(), application.getCurrentDeal()
+				.getLocation().getLng());
 
 		mMap.addMarker(
 				new MarkerOptions().position(dealLatLng).title(
@@ -285,7 +299,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 				.showInfoWindow();
 
 		CameraPosition cameraPosition = new CameraPosition.Builder()
-				.target(dealLatLng).zoom(5).tilt(60) // Sets the tilt of the
+				.target(dealLatLng).zoom(18).tilt(60) // Sets the tilt of the
 														// camera
 														// to 60 degrees
 				.build(); // Creates a CameraPosition from the builder

@@ -5,6 +5,7 @@ import nabhack.localz.R;
 import nabhack.localz.models.Deal;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -67,8 +69,19 @@ public class SecureDealActivity extends Activity {
 			application.setCurrentDeal(application.getDeal(3));
 			Deal deal = application.getCurrentDeal();
 			details.setText(deal.getDescription());
-			ImageLoader.getInstance()
-					.displayImage(deal.getDescImgs()[0], image);
+			
+			// Uncomment when data will be available online
+			//ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
+
+			// Comment next block when data available online
+			String uri = "drawable/"
+					+ deal.getDescImgs()[0].replaceFirst("[.][^.]+$", "");
+			int imageResource = getResources().getIdentifier(uri, null,
+				getPackageName());
+			Drawable drawImage = getResources().getDrawable(imageResource);
+			image.setImageDrawable(drawImage);
+
+			
 			remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO:
 																		// Include
 																		// time
@@ -108,6 +121,7 @@ public class SecureDealActivity extends Activity {
 		return msgs;
 	}
 
+	@Click(R.id.secure_deal)
 	void secureDeal() {
 		Intent intent = new Intent(SecureDealActivity.this, RedeemActivity_.class);
 		Bundle extras = new Bundle();
