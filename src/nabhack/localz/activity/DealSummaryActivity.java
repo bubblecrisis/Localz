@@ -93,9 +93,7 @@ public class DealSummaryActivity extends FragmentActivity {
 	@AfterViews
 	void setupView() {
 		filteredDeals = application.getDealsOnOffer();
-		dealAdapter = new DealAdapter(this, R.layout.deal_list_item,
-				R.id.title, filteredDeals);
-		listView.setAdapter(dealAdapter);
+		setupListBasedOnFilter();
 		initSideMenu();
 		initMenuOPtions();
 	}
@@ -165,34 +163,37 @@ public class DealSummaryActivity extends FragmentActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent arg2) {
 		if (resultCode == Activity.RESULT_OK) {
 			// return from filter
-			List<String> checkedCategories = new ArrayList<String>();
-			for (Category category : ((LocalzApp) getApplication())
-					.getCategories()) {
-				if (category.isChecked()) {
-					checkedCategories.add(category.getDealCategory());
-					Log.d(TAG,
-							"Checked Categories: " + category.getDealCategory());
-				}
-			}
-
-			List<Deal> f = new ArrayList<Deal>();
-			for (Deal deal : ((LocalzApp) getApplication()).getDealsOnOffer()) {
-				String[] dealCategories = deal.getCategories();
-				Log.d(TAG, "dealCategories: " + dealCategories);
-				for (String dCategory : dealCategories) {
-					if (checkedCategories.contains(dCategory)) {
-						f.add(deal);
-						break;
-					}
-				}
-			}
-			Log.d(TAG, "filtered list size: " + f.size());
-			dealAdapter = new DealAdapter(this, R.layout.deal_list_item,
-					R.id.title, f);
-			listView.setAdapter(dealAdapter);
-			dealAdapter.notifyDataSetChanged();
+			setupListBasedOnFilter();
 		}
 		super.onActivityResult(requestCode, resultCode, arg2);
+	}
+
+	private void setupListBasedOnFilter() {
+		List<String> checkedCategories = new ArrayList<String>();
+		for (Category category : ((LocalzApp) getApplication())
+				.getCategories()) {
+			if (category.isChecked()) {
+				checkedCategories.add(category.getDealCategory());
+				Log.d(TAG,
+						"Checked Categories: " + category.getDealCategory());
+			}
+		}
+
+		filteredDeals = new ArrayList<Deal>();
+		for (Deal deal : ((LocalzApp) getApplication()).getDealsOnOffer()) {
+			String[] dealCategories = deal.getCategories();
+			Log.d(TAG, "dealCategories: " + dealCategories);
+			for (String dCategory : dealCategories) {
+				if (checkedCategories.contains(dCategory)) {
+					filteredDeals.add(deal);
+					break;
+				}
+			}
+		}
+		Log.d(TAG, "filtered list size: " + filteredDeals.size());
+		dealAdapter = new DealAdapter(this, R.layout.deal_list_item,
+				R.id.title, filteredDeals);
+		listView.setAdapter(dealAdapter);
 	}
 
 	/**
