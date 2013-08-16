@@ -39,7 +39,7 @@ public class SecureDealActivity extends Activity {
 	@ViewById(R.id.secure_deal_remaining)
 	TextView remaining;
 	
-	String dealid="123";
+	String dealid;
 
 	public SecureDealActivity() {
 	}
@@ -61,12 +61,20 @@ public class SecureDealActivity extends Activity {
 			// the payload is the store id
 			// Chris please handle it
 			// (call backend to retrieve deal, etc.)
-			Toast.makeText(this, "Received NDEF message " + payload,
-					Toast.LENGTH_LONG);
+			Log.d(TAG, "Received NDEF message " + payload);
 
 			// set deal id from NFC message
 			// dealid = getDealIdFromNFCPayload(payload);
+			//dealid:1234567890
+			// NFC tag contains message "dealid:1234567890"
+			// We need to 
+			// 1) parse this message and get dealid value
+			// 2) using this value call server to retreive deal deatails
+			// (or do local retrieval for demo)
+			// 3) then set application.setCurrentDeal(deal from step 2));
+			// for now just retrieving deal [3] comments this line, once 1)-3) done.
 			application.setCurrentDeal(application.getDeal(3));
+			
 			Deal deal = application.getCurrentDeal();
 			details.setText(deal.getDescription());
 			

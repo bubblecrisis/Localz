@@ -1,5 +1,11 @@
 package nabhack.localz.activity;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.activity.FacebookFragment.IFacebookSessionCallback;
@@ -9,7 +15,9 @@ import nabhack.localz.ui.SimpleTextDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.IntentSender;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,6 +40,12 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -47,10 +61,19 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @OptionsMenu(R.menu.deal_details)
 @EActivity(R.layout.activity_deal_details)
 public class DealDetailsActivity extends FragmentActivity implements
-		IFacebookSessionCallback {
+		IFacebookSessionCallback, GooglePlayServicesClient.ConnectionCallbacks,
+		GooglePlayServicesClient.OnConnectionFailedListener {
 
 	private static final String TAG = DealDetailsActivity.class.getSimpleName();
-	
+
+	private LocationClient mLocationClient;
+
+	/*
+	 * Define a request code to send to Google Play services This code is
+	 * returned in Activity.onActivityResult
+	 */
+	private static final int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+
 	@App
 	LocalzApp application;
 
@@ -80,6 +103,12 @@ public class DealDetailsActivity extends FragmentActivity implements
 	SupportMapFragment mapFragment;
 
 	private GoogleMap mMap;
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		mLocationClient = new LocationClient(this, this, this);
+		super.onCreate(arg0);
+	}
 
 	@AfterViews
 	protected void setupView() {
@@ -120,6 +149,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
 		if(item.getItemId() == R.id.action_share) {
 			promptUserToPostDetailOnfacebook();
 		}
@@ -161,7 +191,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 		cancelDialog.show();
 	}
 	
-	
+
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the sections/tabs/pages.
@@ -269,6 +299,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 	private void setUpMapIfNeeded() {
 		if (mMap == null) {
 			mMap = mapFragment.getMap();
+			mMap.setLocationSource(new MockLocationSource());
 		}
 	}
 
@@ -298,5 +329,88 @@ public class DealDetailsActivity extends FragmentActivity implements
 				.build(); // Creates a CameraPosition from the builder
 		mMap.animateCamera(CameraUpdateFactory
 				.newCameraPosition(cameraPosition));
+	}
+
+	@Override
+	public void onConnectionFailed(ConnectionResult connectionResult) {
+		Log.w(TAG, "Failed to connect to Google Play services");
+		/*
+		 * Google Play services can resolve some errors it detects. If the error
+		 * has a resolution, try sending an Intent to start a Google Play
+		 * services activity that can resolve error.
+		 */
+		if (connectionResult.hasResolution()) {
+			try {
+				// Start an Activity that tries to resolve the error
+				connectionResult.startResolutionForResult(this,
+						CONNECTION_FAILURE_RESOLUTION_REQUEST);
+				/*
+				 * Thrown if Google Play services canceled the original
+				 * PendingIntent
+				 */
+			} catch (IntentSender.SendIntentException e) {
+				// Log the error
+				Log.w(TAG,
+						"Failed to connect to Google Play services"
+								+ e.getMessage());
+			}
+		}
+	}
+
+	@Override
+	public void onConnected(Bundle arg0) {
+		mLocationClient.setMockMode(true);
+	}
+
+	@Override
+	public void onDisconnected() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public class MockLocationSource implements LocationSource {
+
+
+		private final Handler handler = new Handler();
+		private OnLocationChangedListener listener;
+
+		private void scheduleNewFix() {
+			handler.postDelayed(updateLocationRunnable,
+					TimeUnit.SECONDS.toMillis(2));
+		}
+
+		private final Runnable updateLocationRunnable = new Runnable() {
+
+			@Override
+			public void run() {
+				android.location.Location randomLocation = generateRandomLocation();
+				listener.onLocationChanged(randomLocation);
+				scheduleNewFix();
+			}
+		};
+
+		public android.location.Location generateRandomLocation() {
+
+			android.location.Location mockedLocation = new android.location.Location(
+					getClass().getSimpleName());
+
+			mockedLocation.setLatitude(-37.885795);
+			mockedLocation.setLongitude(145.083812);
+			mockedLocation.setAccuracy(1);
+
+			return mockedLocation;
+		}
+
+		@Override
+		public void activate(OnLocationChangedListener locationChangedListener) {
+			listener = locationChangedListener;
+			scheduleNewFix();
+		}
+
+		@Override
+		public void deactivate() {
+			handler.removeCallbacks(updateLocationRunnable);
+		}
+
 	}
 }
