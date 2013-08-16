@@ -13,12 +13,19 @@ import nabhack.localz.models.Deal;
 import nabhack.localz.utils.GCMServerUtilities;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.nfc.NdefMessage;
+import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -90,10 +97,88 @@ public class DealSummaryActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 	}
 
+	@Override
+	protected void onResume() {
+		Log.i(TAG, "in onResume() method");
+		Intent intent = getIntent();
+
+		// Android Beam mode
+		if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+			NdefMessage[] msgs = getNdefMessages(intent);
+			String payload = new String(msgs[0].getRecords()[0].getPayload());
+
+			// the payload is the store id
+			// Chris please handle it
+			// (call backend to retrieve deal, etc.)
+			Log.d(TAG, "Received NDEF message " + payload);
+
+			// this is response to checkin NFC tag.
+			// NFC tag contains message "storeid:123456789"
+			// storeid really means "shopping center id"
+			// We need to
+			// 1) parse this message and get storeid value
+			// 2) using this value call server to retreive top/current deals for
+			// this storeid
+			// for this customer because server will know customer's filter
+			// (or do local retrieval for demo)
+			// 3) then set filteredDeals to the deals retrieved from server
+			// for now just
+			// filteredDeals = application.getDealsOnOffer();
+			// setupListBasedOnFilter();
+
+			filteredDeals = application.getDealsOnOffer();
+			setupListBasedOnFilter();
+
+		}
+		
+
+		// GCM
+		
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("nabhack.localz");
+		notificationReceiver = new NotificationBroadcastReceiver();
+		registerReceiver(notificationReceiver, intentFilter);
+		
+		super.onResume();
+	}
+
+	/**
+	 * Gets the NFC message.
+	 * 
+	 * @param intent
+	 *            intent used for nfc.
+	 * @return nfc message.
+	 */
+	protected NdefMessage[] getNdefMessages(Intent intent) {
+		// Parse the intent
+		NdefMessage[] msgs = null;
+		String action = intent.getAction();
+
+		if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
+				|| NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
+			Parcelable[] rawMsgs = intent
+					.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+			if (rawMsgs != null) {
+				msgs = new NdefMessage[rawMsgs.length];
+				for (int i = 0; i < rawMsgs.length; i++) {
+					msgs[i] = (NdefMessage) rawMsgs[i];
+				}
+			} else {
+				Log.e(TAG, "Invalid NDEF message.");
+			}
+		} else {
+			Log.e(TAG, "Unknown intent.");
+		}
+		return msgs;
+	}
+
 	@AfterViews
 	void setupView() {
+		// next 2 lines should not really be there, as we do not know which shopping
+		// center user is in now
 		filteredDeals = application.getDealsOnOffer();
 		setupListBasedOnFilter();
+		
 		initSideMenu();
 		initMenuOPtions();
 	}
@@ -170,12 +255,10 @@ public class DealSummaryActivity extends FragmentActivity {
 
 	private void setupListBasedOnFilter() {
 		List<String> checkedCategories = new ArrayList<String>();
-		for (Category category : ((LocalzApp) getApplication())
-				.getCategories()) {
+		for (Category category : ((LocalzApp) getApplication()).getCategories()) {
 			if (category.isChecked()) {
 				checkedCategories.add(category.getDealCategory());
-				Log.d(TAG,
-						"Checked Categories: " + category.getDealCategory());
+				Log.d(TAG, "Checked Categories: " + category.getDealCategory());
 			}
 		}
 
@@ -314,7 +397,44 @@ public class DealSummaryActivity extends FragmentActivity {
 	private class NotificationBroadcastReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
+			Log.d(TAG, "onReceive()");
 			// Here need to pull new deal, etc. leave it to Chris
+			AlertDialog.Builder builder = new AlertDialog.Builder(
+					DealSummaryActivity.this);
+			// Call server to retrieve deal deatails.
+			// getString("Message") should contain dealid
+			builder.setTitle("New Localz Deal!")
+					.setMessage(
+							"New Deal has just been released. Details of the deail......")
+					.setOnCancelListener(
+							new DialogInterface.OnCancelListener() {
+
+								@Override
+								public void onCancel(DialogInterface dialog) {
+									dialog.dismiss();
+
+								}
+							})
+					.setNeutralButton("Get Deal",
+							new DialogInterface.OnClickListener() {
+
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									// value 5 is hardcoded, need to put actual
+									// value of
+									// the deal
+									application.setCurrentDeal((Deal) listView
+											.getItemAtPosition(5));
+									Intent intent = new Intent(
+											DealSummaryActivity.this,
+											DealDetailsActivity_.class);
+									startActivity(intent);
+									dialog.dismiss();
+
+								}
+							}).create().show();
+
 			Toast.makeText(context, intent.getExtras().getString("Message"),
 					Toast.LENGTH_LONG).show();
 		}
