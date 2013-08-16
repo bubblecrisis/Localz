@@ -25,6 +25,8 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 
+import android.os.StrictMode;
+
 public class HttpClientManager {
 
 	private static final String ACCEPT = "Accept";
@@ -47,6 +49,10 @@ public class HttpClientManager {
 	public DefaultHttpClient httpClient;
 
 	public HttpClientManager() {
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+
 		httpClient = new DefaultHttpClient();
 		ClientConnectionManager mgr = httpClient.getConnectionManager();
 		HttpParams params = httpClient.getParams();
@@ -123,6 +129,8 @@ public class HttpClientManager {
 				while ((s = buffer.readLine()) != null) {
 					responseBuffer.append(s);
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			} finally {
 				try {
 					if (isContent != null) {
@@ -142,6 +150,6 @@ public class HttpClientManager {
 	}
 
 	private boolean isDebug() {
-		return false;
+		return true;
 	}
 }

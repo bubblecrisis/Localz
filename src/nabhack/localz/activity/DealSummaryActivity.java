@@ -8,9 +8,16 @@ import java.util.List;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.adapter.DealAdapter;
+import nabhack.localz.models.BasicResponse;
 import nabhack.localz.models.Category;
 import nabhack.localz.models.Deal;
+import nabhack.localz.models.DeviceCredential;
+import nabhack.localz.models.DeviceRegisterRequest;
+import nabhack.localz.models.DeviceSettings;
+import nabhack.localz.models.Filter;
+import nabhack.localz.models.Notification;
 import nabhack.localz.utils.GCMServerUtilities;
+import nabhack.localz.webservice.WebServiceController;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -66,6 +73,9 @@ public class DealSummaryActivity extends FragmentActivity {
 	public static final String PROPERTY_REG_ID = "registration_id";
 	private static final String PROPERTY_APP_VERSION = "appVersion";
 	private static final String PROPERTY_ON_SERVER_EXPIRATION_TIME = "onServerExpirationTimeMs";
+	private static final String PROPERTY_ON_SERVER_DEVICE_ID = "haruku_device_id";
+	private static final String PROPERTY_ON_SERVER_DEVICE_KEY = "haruku_device_key§";
+	
 	/**
 	 * Default lifespan (7 days) of a reservation until it is considered
 	 * expired.
@@ -81,6 +91,35 @@ public class DealSummaryActivity extends FragmentActivity {
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
+		// Test
+		// Notification notification1 = new Notification("a123asdfj234ubsd323s",
+		// true);
+		// Filter filter1 = new Filter(new ArrayList<String>(), new
+		// ArrayList<String>());
+		// DeviceRegisterRequest request = new
+		// DeviceRegisterRequest(notification1, "Android", "4.3.1",
+		// "0412312312", "0.1", "520a01e1c5b56578f6000008", filter1);
+		// DeviceCredential r =
+		// WebServiceController.getInstance().deviceRegister(request);
+		//
+		// DeviceCredential deviceCredential = new
+		// DeviceCredential(r.getDeviceId(), r.getDeviceKey());
+		// BasicResponse b1 =
+		// WebServiceController.getInstance().deviceSignIn(deviceCredential);
+		//
+		// DeviceSettings s =
+		// WebServiceController.getInstance().getDeviceSettings(r.getDeviceId());
+		//
+		// Notification notification2 = new Notification(null, false);
+		// Filter filter2 = new Filter(new ArrayList<String>(), new
+		// ArrayList<String>());
+		// DeviceSettings deviceSettings = new DeviceSettings(notification2,
+		// filter2);
+		// BasicResponse b2 =
+		// WebServiceController.getInstance().postDeviceSettings(r.getDeviceId(),
+		// deviceSettings);
+
 		gcmRegid = getRegistrationId(getApplicationContext());
 
 		if (gcmRegid.length() == 0) {
@@ -170,12 +209,10 @@ public class DealSummaryActivity extends FragmentActivity {
 
 	private void setupListBasedOnFilter() {
 		List<String> checkedCategories = new ArrayList<String>();
-		for (Category category : ((LocalzApp) getApplication())
-				.getCategories()) {
+		for (Category category : ((LocalzApp) getApplication()).getCategories()) {
 			if (category.isChecked()) {
 				checkedCategories.add(category.getDealCategory());
-				Log.d(TAG,
-						"Checked Categories: " + category.getDealCategory());
+				Log.d(TAG, "Checked Categories: " + category.getDealCategory());
 			}
 		}
 
@@ -205,7 +242,7 @@ public class DealSummaryActivity extends FragmentActivity {
 	 * @param regId
 	 *            registration id
 	 */
-	private void setGCMRegistrationId(Context context, String regId) {
+	private void setGCMRegistrationId(Context context, String regId, DeviceCredential deviceCredential) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		Log.v(TAG, "Saving GCM regId " + regId + " to shared preferences");
 		SharedPreferences.Editor editor = prefs.edit();
@@ -216,6 +253,8 @@ public class DealSummaryActivity extends FragmentActivity {
 		Log.v(TAG, "Setting registration expiry time to "
 				+ new Timestamp(expirationTime));
 		editor.putLong(PROPERTY_ON_SERVER_EXPIRATION_TIME, expirationTime);
+		editor.putString(PROPERTY_ON_SERVER_DEVICE_ID, deviceCredential.getDeviceId());		
+		editor.putString(PROPERTY_ON_SERVER_DEVICE_KEY, deviceCredential.getDeviceKey());		
 		editor.commit();
 	}
 
@@ -263,16 +302,19 @@ public class DealSummaryActivity extends FragmentActivity {
 					}
 					gcmRegid = gcmServer.register(SENDER_ID);
 
-					// Sending gcmRegid to Localz server
-					// This needs to be changed to real Localz server
-					// in Heroku
-
-					GCMServerUtilities.register(getApplicationContext(),
-							gcmRegid);
+					Notification notification = new Notification(
+							gcmRegid, true);
+					Filter filter = new Filter(new ArrayList<String>(),
+							new ArrayList<String>());
+					DeviceRegisterRequest request = new DeviceRegisterRequest(
+							notification, "Android", "4.3.1", "0412312312",
+							"0.1", "520a01e1c5b56578f6000008", filter);
+					DeviceCredential deviceCredential = WebServiceController.getInstance()
+							.deviceRegister(request);
 
 					// Save the regid to SharedPreferences - no need to register
 					// again.
-					setGCMRegistrationId(getApplicationContext(), gcmRegid);
+					setGCMRegistrationId(getApplicationContext(), gcmRegid, deviceCredential);
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}
