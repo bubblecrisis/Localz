@@ -1,10 +1,6 @@
 package nabhack.localz.activity;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
@@ -38,8 +34,6 @@ import com.facebook.RequestAsyncTask;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;

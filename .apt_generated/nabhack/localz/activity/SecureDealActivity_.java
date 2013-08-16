@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,9 +35,24 @@ public final class SecureDealActivity_
     }
 
     private void afterSetContentView_() {
+        details = ((TextView) findViewById(id.secure_deal_details));
         remaining = ((TextView) findViewById(id.secure_deal_remaining));
         image = ((ImageView) findViewById(id.secure_deal_image));
-        details = ((TextView) findViewById(id.secure_deal_details));
+        {
+            View view = findViewById(id.secure_deal);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SecureDealActivity_.this.secureDeal();
+                    }
+
+                }
+                );
+            }
+        }
         setupView();
     }
 

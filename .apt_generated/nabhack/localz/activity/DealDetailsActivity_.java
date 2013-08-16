@@ -9,10 +9,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -24,6 +28,7 @@ public final class DealDetailsActivity_
     extends DealDetailsActivity
 {
 
+    private Handler handler_ = new Handler();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +83,49 @@ public final class DealDetailsActivity_
         }
         FragmentActivity activity_ = ((FragmentActivity) this);
         return activity_.getSupportFragmentManager().findFragmentById(id);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(nabhack.localz.R.menu.deal_details, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void promptUserToPostDetailOnfacebook() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    DealDetailsActivity_.super.promptUserToPostDetailOnfacebook();
+                } catch (RuntimeException e) {
+                    Log.e("DealDetailsActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void showFacebookShareToast() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    DealDetailsActivity_.super.showFacebookShareToast();
+                } catch (RuntimeException e) {
+                    Log.e("DealDetailsActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
     }
 
     public static class IntentBuilder_ {
