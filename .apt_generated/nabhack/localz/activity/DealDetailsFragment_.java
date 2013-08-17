@@ -8,9 +8,7 @@ package nabhack.localz.activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import nabhack.localz.LocalzApp;
@@ -33,26 +31,10 @@ public final class DealDetailsFragment_
     }
 
     private void afterSetContentView_() {
-        remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
-        details = ((TextView) findViewById(nabhack.localz.R.id.details));
-        title = ((TextView) findViewById(nabhack.localz.R.id.title));
         image = ((ImageView) findViewById(nabhack.localz.R.id.image));
-        faceBookShareBtn = ((Button) findViewById(nabhack.localz.R.id.share_facebook_btn));
-        {
-            View view = findViewById(nabhack.localz.R.id.share_facebook_btn);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        DealDetailsFragment_.this.clickOnShareFaceBookBtn();
-                    }
-
-                }
-                );
-            }
-        }
+        title = ((TextView) findViewById(nabhack.localz.R.id.title));
+        details = ((TextView) findViewById(nabhack.localz.R.id.details));
+        remaining = ((TextView) findViewById(nabhack.localz.R.id.remaining));
         setupView();
     }
 

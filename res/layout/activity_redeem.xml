@@ -8,15 +8,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RedeemActivity" >
 
-    <TextView android:id="@+id/deal_name"
+    <TextView
+        android:id="@+id/deal_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deal Secured" />
+        android:layout_centerHorizontal="true"
+        android:text="Deal Secured"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36sp" />
 
-    <ImageView android:layout_below="@id/deal_name"
+    <TextView
+        android:id="@+id/deal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/deal_heading"
+        android:layout_centerHorizontal="true"
+        android:text="Blah Blah"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="16sp" />
+
+    <ImageView
         android:id="@+id/qrcode_image_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/deal_title"
         android:layout_gravity="center_horizontal"
         android:scaleType="center" />
 

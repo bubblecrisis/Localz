@@ -9,8 +9,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import nabhack.localz.LocalzApp;
+import nabhack.localz.R.id;
 import nabhack.localz.R.layout;
 
 public final class RedeemActivity_
@@ -26,9 +32,15 @@ public final class RedeemActivity_
     }
 
     private void init_(Bundle savedInstanceState) {
+        injectExtras_();
+        windowsManager = ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE));
+        application = ((LocalzApp) this.getApplication());
     }
 
     private void afterSetContentView_() {
+        dealTitle = ((TextView) findViewById(id.deal_title));
+        qrImageView = ((ImageView) findViewById(id.qrcode_image_view));
+        initDisplay();
     }
 
     @Override
@@ -51,6 +63,31 @@ public final class RedeemActivity_
 
     public static RedeemActivity_.IntentBuilder_ intent(Context context) {
         return new RedeemActivity_.IntentBuilder_(context);
+    }
+
+    @SuppressWarnings("unchecked")
+    private<T >T cast_(Object object) {
+        return ((T) object);
+    }
+
+    private void injectExtras_() {
+        Intent intent_ = getIntent();
+        Bundle extras_ = intent_.getExtras();
+        if (extras_!= null) {
+            if (extras_.containsKey("dealid")) {
+                try {
+                    dealid = cast_(extras_.get("dealid"));
+                } catch (ClassCastException e) {
+                    Log.e("RedeemActivity_", "Could not cast extra to expected type, the field is left to its default value", e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void setIntent(Intent newIntent) {
+        super.setIntent(newIntent);
+        injectExtras_();
     }
 
     public static class IntentBuilder_ {
@@ -82,6 +119,11 @@ public final class RedeemActivity_
             } else {
                 context_.startActivity(intent_);
             }
+        }
+
+        public RedeemActivity_.IntentBuilder_ dealid(String dealid) {
+            intent_.putExtra("dealid", dealid);
+            return this;
         }
 
     }
