@@ -19,9 +19,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -77,6 +79,10 @@ public class DealDetailsActivity extends FragmentActivity implements
 
 	boolean isNewFacebookLogin;
 
+	
+	@ViewById(R.id.pager_title_strip)
+	PagerTitleStrip pagerTitleStrip;
+	
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -132,6 +138,8 @@ public class DealDetailsActivity extends FragmentActivity implements
 			}
 		});
 
+		pagerTitleStrip.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+		
 		setUpMapIfNeeded();
 		setUpMap();
 

@@ -47,7 +47,7 @@ public class DealDetailsFragment extends Fragment {
 	@AfterViews
 	void setupView() {
 		details.setText(deal.getDescription());
-		title.setText(deal.getTitle());
+		//title.setText(deal.getTitle());
 
 		// Uncomment when data will be available online
 		// ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
