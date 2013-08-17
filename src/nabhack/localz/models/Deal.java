@@ -79,7 +79,14 @@ public class Deal {
 	private String discountCode;
 	@Expose
 	private int secondsToExpire;
+	@Expose String shortDescription;
 	
+	public String getShortDescription() {
+		return shortDescription;
+	}
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
 	public int getSecondsToExpire() {
 		return secondsToExpire;
 	}

@@ -7,14 +7,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DealSummaryActivity_" >
+    tools:context=".DealSummaryActivity_" 
+    android:background="#25b89b">
 
-    <ListView
+    <ListView android:paddingTop="16dp"
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" 
+        android:dividerHeight="16dp"
+        android:divider="#25b89b"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
        >
     </ListView>
 

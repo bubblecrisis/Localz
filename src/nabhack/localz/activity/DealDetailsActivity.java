@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
+import nabhack.localz.activity.DealDetailsFragment.Callback;
 import nabhack.localz.activity.FacebookFragment.IFacebookSessionCallback;
 import nabhack.localz.models.Deal;
 import nabhack.localz.ui.SimpleTextDialog;
@@ -62,7 +63,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 @EActivity(R.layout.activity_deal_details)
 public class DealDetailsActivity extends FragmentActivity implements
 		IFacebookSessionCallback, GooglePlayServicesClient.ConnectionCallbacks,
-		GooglePlayServicesClient.OnConnectionFailedListener {
+		GooglePlayServicesClient.OnConnectionFailedListener, Callback{
 
 	static final float FADE_DEGREE = 0.35f;
 
@@ -165,24 +166,13 @@ public class DealDetailsActivity extends FragmentActivity implements
 	
 	void initMenuOPtions() {
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		getActionBar().setCustomView(R.layout.abs_home_layout);
+		getActionBar().setCustomView(R.layout.abs_details_layout);
 		ImageView menuIcon = (ImageView) findViewById(R.id.abs_home_menu_id);
 		menuIcon.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				menu.toggle();
-			}
-		});
-
-		ImageView menuIconFilter = (ImageView) findViewById(R.id.abs_home_menu_filter);
-		menuIconFilter.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(DealDetailsActivity.this,
-						FilterActivity_.class);
-				startActivityForResult(intent, 1);
 			}
 		});
 	}
@@ -482,5 +472,9 @@ public class DealDetailsActivity extends FragmentActivity implements
 			handler.removeCallbacks(updateLocationRunnable);
 		}
 
+	}
+
+	@Override
+	public void initDisplay() {
 	}
 }

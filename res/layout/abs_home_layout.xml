@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="#2d3e50" >
 
     <RelativeLayout
         android:id="@+id/abs_home_menu_layout"
@@ -11,20 +12,31 @@
         android:gravity="center_vertical"
         android:paddingLeft="4dp" >
 
-        <ImageView
-            android:id="@+id/abs_home_menu_id"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_menu_notifications" />
+            android:orientation="horizontal" >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_toRightOf="@+id/abs_home_menu_id"
-            android:paddingLeft="16dp"
-            android:src="@drawable/logo_chadstone_black" />
+            <ImageView
+                android:id="@+id/abs_home_menu_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_menu_notifications" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:src="@drawable/logo_chadstone_black" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/abs_home_menu_filter"

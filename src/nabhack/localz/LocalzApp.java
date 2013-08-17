@@ -31,6 +31,9 @@ public class LocalzApp extends Application {
 	 * @return the currentDeal
 	 */
 	public Deal getCurrentDeal() {
+		if (currentDeal == null) {
+			currentDeal = dealsOnOffer.get(3);
+		}
 		return currentDeal;
 	}
 

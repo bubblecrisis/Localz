@@ -30,7 +30,7 @@ public class FrontpageActivity extends Activity {
 
 	@UiThread
 	void displayMainPage() {
-		Intent intent = new Intent(FrontpageActivity.this, DealDetailsActivity_.class);
+		Intent intent = new Intent(FrontpageActivity.this, DealSummaryActivity_.class);
 		startActivity(intent);
 		finish();
 	}

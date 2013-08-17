@@ -2,9 +2,11 @@ package nabhack.localz.activity;
 
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
+import nabhack.localz.models.Deal;
 import nabhack.localz.ui.ImageUtils;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -31,6 +33,9 @@ public class RedeemActivity extends Activity {
 	@ViewById(R.id.qrcode_image_view)
 	ImageView qrImageView;
 
+	@ViewById(R.id.image)
+	ImageView image;
+	
 	@ViewById(R.id.deal_title)
 	TextView dealTitle;
 	
@@ -39,8 +44,16 @@ public class RedeemActivity extends Activity {
 	
 	@AfterViews
 	void initDisplay() {
+		application.setCurrentDeal(application.getDeal(3));
+		Deal deal = application.getCurrentDeal();
 		createQRCode(application.getCurrentDeal().getTitle());
 		dealTitle.setText(application.getCurrentDeal().getTitle());
+		String uri = "drawable/"
+				+ deal.getDescImgs()[0].replaceFirst("[.][^.]+$", "");
+		int imageResource = getResources().getIdentifier(uri, null,getPackageName());
+		Drawable drawImage = getResources().getDrawable(imageResource);
+		image.setImageDrawable(drawImage);
+		
 	}
 	
 	private void createQRCode(String id) {

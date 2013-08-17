@@ -16,5 +16,13 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    
+     <!-- Utility Bar -->
+    <style name="Vertical.Divider" parent="android:Theme.Light" >
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#25b89b</item>
+    </style>
 
 </resources>

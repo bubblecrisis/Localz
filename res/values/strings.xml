@@ -48,7 +48,7 @@
   	<string name="side_menu_header_text">Secured Deals</string>
   
   	<!-- Secure Deal -->
-  	<string name="secure_deal">Secure deal</string>
+  	<string name="secure_deal">Claim deal</string>
   	
   	<!-- Menu action bar -->
   	<string name="action_share">Share</string>

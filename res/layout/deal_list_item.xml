@@ -2,13 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="@drawable/round_rectangle"
     android:descendantFocusability="blocksDescendants"
     android:gravity="center_vertical|left"
     android:maxHeight="60dp"
     android:minHeight="60dp"
-    android:orientation="vertical"
-    android:padding="10dp" >
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="0.3"
+        android:clickable="false"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textIsSelectable="false"
+        android:textStyle="bold" >
+    </TextView>
 
     <ImageView
         android:id="@+id/image"
@@ -22,36 +41,61 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/special"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
             android:layout_marginLeft="5dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.5"
             android:clickable="false"
-            android:ellipsize="end"
+            android:gravity="center"
             android:maxLines="1"
-            android:text="Lorem ipsum dolor sit amet, consectetur"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000000"
-            android:textIsSelectable="false"
-            android:textStyle="bold" >
-        </TextView>
-
-        <TextView
-            android:id="@+id/remaining"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="0.7"
-            android:clickable="false"
-            android:gravity="right|bottom"
-            android:maxLines="1"
-            android:text="Qty / Time remaining"
+            android:paddingLeft="10dp"
+            android:text="2 for 1"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#770000"
-            android:textIsSelectable="false" />
+            android:textColor="#e64c3c"
+            android:textIsSelectable="false"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View style="@style/Vertical.Divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingRight="10dp"
+                android:text="02:02:12 31"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#e64c3c"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/remaining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="5dp"
+                android:paddingRight="10dp"
+                android:text="Time remaining"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#e64c3c"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

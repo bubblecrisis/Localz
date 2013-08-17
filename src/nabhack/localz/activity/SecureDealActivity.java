@@ -1,54 +1,58 @@
-package nabhack.localz.activity;
+       package nabhack.localz.activity;
 
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
+import nabhack.localz.activity.DealDetailsFragment.Callback;
 import nabhack.localz.models.Deal;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.NetworkInfo.DetailedState;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 @EActivity(R.layout.activity_secure_deal)
-public class SecureDealActivity extends Activity {
+public class SecureDealActivity extends FragmentActivity implements Callback{
 
 	public static final String DEALID_INTENT_EXTRAS = "dealid";
 	private static final String TAG = "SecureDealActivity";
 	@App
 	LocalzApp application;
-
-	@ViewById(R.id.secure_deal_image)
-	ImageView image;
+	
+	@ViewById(R.id.deals_fragment)
+	LinearLayout dealLayout;
 
 	@ViewById(R.id.deal_title)
 	TextView dealTitle;
 	
-	@ViewById(R.id.secure_deal_details)
-	TextView details;
-
-	@ViewById(R.id.secure_deal_remaining)
-	TextView remaining;
-	
 	String dealid;
+	
+	DealDetailsFragment dealDetailsFragment;
 
 	public SecureDealActivity() {
 	}
 
 	@AfterViews
-	void setupView() {
+	void setupView() {	
+		dealDetailsFragment = new DealDetailsFragment_();
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.add(R.id.deals_fragment, dealDetailsFragment);
+		ft.commit();
+		application.setCurrentDeal(application.getDeal(3));	
+		dealDetailsFragment.setDeal(application.getCurrentDeal());
+		
 	}
 
 	@Override
@@ -75,12 +79,9 @@ public class SecureDealActivity extends Activity {
 			// 2) using this value call server to retreive deal deatails
 			// (or do local retrieval for demo)
 			// 3) then set application.setCurrentDeal(deal from step 2));
-			// for now just retrieving deal [3] comments this line, once 1)-3) done.
-			application.setCurrentDeal(application.getDeal(3));
-			
+			// for now just retrieving deal [3] comments this line, once 1)-3) done.		
 			Deal deal = application.getCurrentDeal();
 			dealTitle.setText(deal.getTitle());
-			details.setText(deal.getDescription());
 			
 			// Uncomment when data will be available online
 			//ImageLoader.getInstance().displayImage(deal.getDescImgs()[0], image);
@@ -90,15 +91,6 @@ public class SecureDealActivity extends Activity {
 					+ deal.getDescImgs()[0].replaceFirst("[.][^.]+$", "");
 			int imageResource = getResources().getIdentifier(uri, null,
 				getPackageName());
-			Drawable drawImage = getResources().getDrawable(imageResource);
-			image.setImageDrawable(drawImage);
-
-			
-			remaining.setText(deal.getQuantityLimit() + " Remaining"); // TODO:
-																		// Include
-																		// time
-																		// remaining
-
 		}
 		super.onResume();
 	}
@@ -140,5 +132,10 @@ public class SecureDealActivity extends Activity {
 		extras.putString(DEALID_INTENT_EXTRAS, dealid);
 		intent.putExtras(extras);
 		startActivity(intent);
+	}
+
+	@Override
+	public void initDisplay() {
+		dealDetailsFragment.showArrows(false);	
 	}
 }

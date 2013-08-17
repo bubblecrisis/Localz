@@ -21,7 +21,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"Movie123ABC",
-    secondsToExpire:380
+    secondsToExpire:380,
+    shortDescription:"Save 75%"
 },
  {
     store:{
@@ -46,7 +47,9 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"LGLCD123ABC",
-    secondsToExpire:1380    
+    secondsToExpire:1380,
+    shortDescription:"Save 50%"
+      
 },
  {
     store:{
@@ -71,7 +74,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"RevlonFree123ABC",
-    secondsToExpire:480  
+    secondsToExpire:0,
+    shortDescription:"FREE"  
 },
  {
     store:{
@@ -96,7 +100,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"Icon247-123ABC",
-    secondsToExpire:680    
+    secondsToExpire:680,
+    shortDescription:"Save 30%"    
 },
  {
     store:{
@@ -121,7 +126,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"Activebra123ABC",
-    secondsToExpire:720  
+    secondsToExpire:0,
+    shortDescription:"FREE"  
 },
  {
     store:{
@@ -146,7 +152,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"PeaCoat123ABC",
-    secondsToExpire:720  
+    secondsToExpire:720,
+    shortDescription:"75% Off"   
     
 },
  {
@@ -172,7 +179,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"halfchicken123ABC",
-    secondsToExpire:1720      
+    secondsToExpire:0,
+    shortDescription:"Buy 1 get 1 FREE"       
 },
  {
     store:{
@@ -197,7 +205,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"burritodeal123ABC",
-    secondsToExpire:903      
+    secondsToExpire:0,
+    shortDescription:"FREE"     
 },
  {
     store:{
@@ -222,7 +231,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"lattedeal123ABC",
-    secondsToExpire:1203 
+    secondsToExpire:0,
+    shortDescription:"$1.00 Only" 
 },
  {
     store:{
@@ -247,7 +257,8 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"lattedeal123ABC",
-    secondsToExpire:5203 
+    secondsToExpire:0,
+    shortDescription:"FREE" 
 },
  {
     store:{
@@ -259,7 +270,7 @@
     title:"$5 seats for 3pm showing of The Conjuring",
 	savings:"",
 	cost:"",
-    description:"$5 seats until sold out for 3pm showing of The Conjuring. Only valid for Saturday 31 August 2013 @ Hoyts Chadstone.  Not valid with any other offers",
+    description:"2 for 1 seats until sold out for 3pm showing of The Conjuring. Only valid for Saturday 31 August 2013 @ Hoyts Chadstone.  Not valid with any other offers",
     descImgs:["hoyts.jpg"],
 	location:{lat:-37.884861, lng:145.083864},
     expiryDateTime: "2013-08-31 15:00:00TZ",
@@ -272,5 +283,6 @@
     isSecureable:true,
     isUserRequired:false,
     discountCode:"3pmConjuring123ABC",
-    secondsToExpire:123 
+    secondsToExpire:123,
+    shortDescription:"2 For 1"  
 }]

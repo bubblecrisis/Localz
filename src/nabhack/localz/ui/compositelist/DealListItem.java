@@ -23,10 +23,6 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EViewGroup(R.layout.side_menu_deal_list_item)
 public class DealListItem extends RelativeLayout {
 
-	static final String TAG = "TokenTxnListItem";
-
-	static final String TYPE_TEXT_KEY = "token_txn_{type}_name";
-
 	Context context;
 
 	@ViewById(R.id.side_menu_payment_deal_summary_text)

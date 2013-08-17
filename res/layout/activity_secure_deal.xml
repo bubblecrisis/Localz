@@ -9,18 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DealSummaryActivity" >
 
-    <TextView
-        android:id="@+id/deal_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/deal_heading"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:text="Secure Deal"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="36sp" />
-    
-    <TextView
+      <TextView
         android:id="@+id/deal_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,40 +18,21 @@
         android:layout_gravity="center_horizontal"
         android:text="Secure Deal"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="18sp" />
-
-    <ImageView
-        android:id="@+id/secure_deal_image"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:id="@+id/secure_deal_details"
-        android:layout_width="wrap_content"
+        android:textSize="22sp" />
+    
+    <LinearLayout
+        android:id="@+id/deals_fragment"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+   
     <Button
         android:id="@+id/secure_deal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/secure_deal" />
-
-    <TextView
-        android:id="@+id/secure_deal_remaining"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginLeft="5dp"
-        android:layout_weight="0.7"
-        android:clickable="false"
-        android:gravity="right|bottom"
-        android:maxLines="1"
-        android:text="Qty / Time remaining"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#770000"
-        android:textIsSelectable="false" />
-
+ 
 </LinearLayout>
