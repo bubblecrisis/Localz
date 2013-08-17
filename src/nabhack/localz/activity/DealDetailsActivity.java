@@ -11,6 +11,8 @@ import nabhack.localz.ui.SimpleTextDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +29,7 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.FacebookRequestError;
@@ -53,6 +56,7 @@ import com.googlecode.androidannotations.annotations.FragmentById;
 import com.googlecode.androidannotations.annotations.OptionsMenu;
 import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 @OptionsMenu(R.menu.deal_details)
 @EActivity(R.layout.activity_deal_details)
@@ -60,6 +64,9 @@ public class DealDetailsActivity extends FragmentActivity implements
 		IFacebookSessionCallback, GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
 
+	static final float FADE_DEGREE = 0.35f;
+
+	
 	private static final String TAG = DealDetailsActivity.class.getSimpleName();
 
 	private LocationClient mLocationClient;
@@ -78,6 +85,10 @@ public class DealDetailsActivity extends FragmentActivity implements
 	boolean isLoggingIn;
 
 	boolean isNewFacebookLogin;
+	
+	SlidingMenu menu;
+	
+	SideMenuListFragment sideMenuFragment;
 
 	
 	@ViewById(R.id.pager_title_strip)
@@ -143,10 +154,67 @@ public class DealDetailsActivity extends FragmentActivity implements
 		setUpMapIfNeeded();
 		setUpMap();
 
+		initSideMenu();
+		initMenuOPtions();
+
 		facebookFragment = new FacebookFragment_();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.add(R.id.pager, facebookFragment);
 		ft.commit();
+	}
+	
+	void initMenuOPtions() {
+		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		getActionBar().setCustomView(R.layout.abs_home_layout);
+		ImageView menuIcon = (ImageView) findViewById(R.id.abs_home_menu_id);
+		menuIcon.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				menu.toggle();
+			}
+		});
+
+		ImageView menuIconFilter = (ImageView) findViewById(R.id.abs_home_menu_filter);
+		menuIconFilter.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(DealDetailsActivity.this,
+						FilterActivity_.class);
+				startActivityForResult(intent, 1);
+			}
+		});
+	}
+	
+	private void initSideMenu() {
+		// configure the SlidingMenu
+		menu = new SlidingMenu(this);
+		menu.setMode(SlidingMenu.LEFT);
+		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+		menu.setShadowWidthRes(R.dimen.side_menu_shadow_width);
+		menu.setShadowDrawable(R.drawable.sidemenu_shadow);
+		menu.setBehindOffsetRes(R.dimen.side_menu_offset);
+		menu.setFadeDegree(FADE_DEGREE);
+		menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+		menu.setMenu(R.layout.menu_frame);
+		menu.setOnClosedListener(new SlidingMenu.OnClosedListener() {
+			@Override
+			public void onClosed() {
+
+			}
+		});
+		sideMenuFragment = new SideMenuListFragment_();
+
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.menu_frame, sideMenuFragment).commit();
+		menu.setOnOpenListener(new SlidingMenu.OnOpenListener() {
+			@Override
+			public void onOpen() {
+				sideMenuFragment.refresh();
+			}
+		});
+
 	}
 
 	@Override

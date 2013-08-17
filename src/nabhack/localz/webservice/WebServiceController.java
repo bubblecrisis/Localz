@@ -239,7 +239,8 @@ public class WebServiceController {
 	}
 	
 	public List<Deal> readJsonStream(InputStream in) throws IOException {
-		byte[] buffer = new byte[10000];
+		// TODO: increase buffer automatically
+		byte[] buffer = new byte[1000000];
 		int readBytes = in.read(buffer);
 		String jsonString = new String(buffer, 0, readBytes);
 		List<Deal> deals = new ArrayList<Deal>();
