@@ -20,15 +20,14 @@
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    <TextView android:id="@+id/localzText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Localz" 
         android:textColor="#e64c3c"
-        android:textSize="32sp"
-        android:paddingBottom="20dp"
-        android:textStyle="bold" />
+        android:textSize="38sp"
+        android:paddingBottom="20dp"/>
 
 </RelativeLayout>

@@ -27,6 +27,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -39,6 +40,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -275,6 +277,9 @@ public class DealSummaryActivity extends FragmentActivity {
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		getActionBar().setCustomView(R.layout.abs_home_layout);
 		ImageView menuIcon = (ImageView) findViewById(R.id.abs_home_menu_id);
+		Typeface rockbFont = Typeface.createFromAsset(this.getAssets(),"rockb.ttf");
+		((TextView) getActionBar().getCustomView().findViewById(R.id.actionbar_header)).setTypeface(rockbFont);
+
 		menuIcon.setOnClickListener(new OnClickListener() {
 
 			@Override
