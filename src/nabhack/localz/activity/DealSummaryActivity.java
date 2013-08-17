@@ -82,7 +82,7 @@ public class DealSummaryActivity extends FragmentActivity {
 	private static final String PROPERTY_ON_SERVER_EXPIRATION_TIME = "onServerExpirationTimeMs";
 	private static final String PROPERTY_ON_SERVER_DEVICE_ID = "haruku_device_id";
 	private static final String PROPERTY_ON_SERVER_DEVICE_KEY = "haruku_device_key§";
-	
+
 	/**
 	 * Default lifespan (7 days) of a reservation until it is considered
 	 * expired.
@@ -99,7 +99,7 @@ public class DealSummaryActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		// Test
+		// Test register
 		// Notification notification1 = new Notification("a123asdfj234ubsd323s",
 		// true);
 		// Filter filter1 = new Filter(new ArrayList<String>(), new
@@ -110,14 +110,17 @@ public class DealSummaryActivity extends FragmentActivity {
 		// DeviceCredential r =
 		// WebServiceController.getInstance().deviceRegister(request);
 		//
+		// Test sign in
 		// DeviceCredential deviceCredential = new
 		// DeviceCredential(r.getDeviceId(), r.getDeviceKey());
 		// BasicResponse b1 =
 		// WebServiceController.getInstance().deviceSignIn(deviceCredential);
 		//
+		// Test get devices settings
 		// DeviceSettings s =
 		// WebServiceController.getInstance().getDeviceSettings(r.getDeviceId());
 		//
+		// Test post device settings
 		// Notification notification2 = new Notification(null, false);
 		// Filter filter2 = new Filter(new ArrayList<String>(), new
 		// ArrayList<String>());
@@ -126,6 +129,9 @@ public class DealSummaryActivity extends FragmentActivity {
 		// BasicResponse b2 =
 		// WebServiceController.getInstance().postDeviceSettings(r.getDeviceId(),
 		// deviceSettings);
+
+		// Test get deals
+		// List<Deal> d = WebServiceController.getInstance().getDeals("latest");
 
 		gcmRegid = getRegistrationId(getApplicationContext());
 
@@ -327,7 +333,8 @@ public class DealSummaryActivity extends FragmentActivity {
 	 * @param regId
 	 *            registration id
 	 */
-	private void setGCMRegistrationId(Context context, String regId, DeviceCredential deviceCredential) {
+	private void setGCMRegistrationId(Context context, String regId,
+			DeviceCredential deviceCredential) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		Log.v(TAG, "Saving GCM regId " + regId + " to shared preferences");
 		SharedPreferences.Editor editor = prefs.edit();
@@ -338,8 +345,10 @@ public class DealSummaryActivity extends FragmentActivity {
 		Log.v(TAG, "Setting registration expiry time to "
 				+ new Timestamp(expirationTime));
 		editor.putLong(PROPERTY_ON_SERVER_EXPIRATION_TIME, expirationTime);
-		editor.putString(PROPERTY_ON_SERVER_DEVICE_ID, deviceCredential.getDeviceId());		
-		editor.putString(PROPERTY_ON_SERVER_DEVICE_KEY, deviceCredential.getDeviceKey());		
+		editor.putString(PROPERTY_ON_SERVER_DEVICE_ID,
+				deviceCredential.getDeviceId());
+		editor.putString(PROPERTY_ON_SERVER_DEVICE_KEY,
+				deviceCredential.getDeviceKey());
 		editor.commit();
 	}
 
@@ -387,19 +396,19 @@ public class DealSummaryActivity extends FragmentActivity {
 					}
 					gcmRegid = gcmServer.register(SENDER_ID);
 
-					Notification notification = new Notification(
-							gcmRegid, true);
+					Notification notification = new Notification(gcmRegid, true);
 					Filter filter = new Filter(new ArrayList<String>(),
 							new ArrayList<String>());
 					DeviceRegisterRequest request = new DeviceRegisterRequest(
 							notification, "Android", "4.3.1", "0412312312",
 							"0.1", "520a01e1c5b56578f6000008", filter);
-					DeviceCredential deviceCredential = WebServiceController.getInstance()
-							.deviceRegister(request);
+					DeviceCredential deviceCredential = WebServiceController
+							.getInstance().deviceRegister(request);
 
 					// Save the regid to SharedPreferences - no need to register
 					// again.
-					setGCMRegistrationId(getApplicationContext(), gcmRegid, deviceCredential);
+					setGCMRegistrationId(getApplicationContext(), gcmRegid,
+							deviceCredential);
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 				}

@@ -1,15 +1,17 @@
 package nabhack.localz.webservice;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import nabhack.localz.models.BasicResponse;
+import nabhack.localz.models.Deal;
 import nabhack.localz.models.DeviceCredential;
 import nabhack.localz.models.DeviceRegisterRequest;
 import nabhack.localz.models.DeviceSettings;
-import nabhack.localz.models.Filter;
-import nabhack.localz.models.Notification;
 import nabhack.localz.models.ResponseType;
 
 import org.json.JSONException;
@@ -124,7 +126,8 @@ public class WebServiceController {
 	// boolean isPushEnabled, String mobileOS, String mobileOSVer,
 	// String mobileNumber, String appVer, String area,
 	// Filter filter) {
-	public DeviceCredential deviceRegister(DeviceRegisterRequest deviceRegisterRequest) {
+	public DeviceCredential deviceRegister(
+			DeviceRegisterRequest deviceRegisterRequest) {
 
 		String url = URL_BASE + URL_DEVICE_REGISTER;
 		int serverResponse = HttpURLConnection.HTTP_OK;
@@ -181,7 +184,8 @@ public class WebServiceController {
 				DeviceSettings.class, DeviceSettings.JSON_KEY);
 	}
 
-	public BasicResponse postDeviceSettings(String deviceId, DeviceSettings deviceSettings) {
+	public BasicResponse postDeviceSettings(String deviceId,
+			DeviceSettings deviceSettings) {
 
 		String url = URL_BASE
 				+ URL_DEVICE_SETTINGS.replace("{deviceId}", deviceId);
@@ -201,22 +205,47 @@ public class WebServiceController {
 				BasicResponse.class, BasicResponse.JSON_KEY);
 	}
 
-	public Map<String, String> getDeals(String filter) {
+	public List<Deal> getDeals(String filter) {
 
-		/**
-		 * String url = URL_BASE + URL_GET_DEALS.replace("{filter}", filter);
-		 * int serverResponse = HttpURLConnection.HTTP_OK; StringBuffer
-		 * responseBuffer = new StringBuffer();
-		 * 
-		 * try { serverResponse = this.httpClientManager.connectToWebServer(url,
-		 * HttpClientManager.HTTP_METHOD.GET, null, responseBuffer); } catch
-		 * (IOException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 * 
-		 * return processServerResponse(serverResponse,
-		 * responseBuffer.toString());
-		 */
+//		String url = URL_BASE + URL_GET_DEALS.replace("{filter}", filter);
+//		int serverResponse = HttpURLConnection.HTTP_OK;
+//		StringBuffer responseBuffer = new StringBuffer();
+//
+//		try {
+//			serverResponse = this.httpClientManager.connectToWebServer(url,
+//					HttpClientManager.HTTP_METHOD.GET, null, responseBuffer);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		List<Deal> dealList = new ArrayList<Deal>();
+//		String responseString = responseBuffer.toString();
+//		Deal[] deals = processServerResponse(serverResponse, responseString,
+//				Deal[].class, Deal.JSON_KEY);
+//		dealList = (deals != null) ? new ArrayList<Deal>(Arrays.asList(deals))
+//				: new ArrayList<Deal>();
+		
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("res/raw/sample_deal.txt");
+		List<Deal> dealList = new ArrayList<Deal>();
+		try {
+			dealList = readJsonStream(in);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		return null;
+		return dealList;
+	}
+	
+	public List<Deal> readJsonStream(InputStream in) throws IOException {
+		byte[] buffer = new byte[10000];
+		int readBytes = in.read(buffer);
+		String jsonString = new String(buffer, 0, readBytes);
+		List<Deal> deals = new ArrayList<Deal>();
+		Gson gson = new Gson();
+		deals = Arrays.asList(gson.fromJson(jsonString, Deal[].class));
+		
+		return deals;
 	}
 }
