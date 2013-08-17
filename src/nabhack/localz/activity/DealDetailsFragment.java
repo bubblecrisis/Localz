@@ -81,6 +81,7 @@ public class DealDetailsFragment extends Fragment {
 																	// time
 																	// remaining		
 		countDownInSeconds = deal.getSecondsToExpire();
+		Log.i(TAG, "count starting :" + countDownInSeconds);
 		countdown.setText(getTimeFormat(countDownInSeconds));
 	}
 	
