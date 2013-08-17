@@ -1,21 +1,18 @@
 package nabhack.localz;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import nabhack.localz.models.Category;
 import nabhack.localz.models.Deal;
+import nabhack.localz.webservice.WebServiceController;
 import android.app.Application;
 import android.content.res.AssetManager;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import com.googlecode.androidannotations.annotations.EApplication;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -71,16 +68,8 @@ public class LocalzApp extends Application {
 
 		final String IMAGE_URL = "http://apcmag.com/images/2011/Top3TabletSamsungGalaxyTabAd.jpg";
 		final String DESC = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
-		AssetManager assetManager = getApplicationContext().getAssets();
-		InputStream inputStream;
-		try {
-			inputStream = assetManager.open("sample_deal.txt");
-			dealsOnOffer = readJsonStream(inputStream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		dealsOnOffer = WebServiceController.getInstance().getDeals("latest");
 
 		categories = new ArrayList<Category>();
 		categories.add(new Category("Electronics", true));
