@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#2d3e50" >
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/abs_home_menu_layout"
@@ -19,13 +18,15 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_menu_notifications" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/actionbar_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_toRightOf="@+id/abs_home_menu_id"
-            android:paddingLeft="16dp"
-            android:src="@drawable/logo_chadstone_black" />
+            android:paddingLeft="50dp"
+            android:textSize="26sp"
+            android:text="@string/actionbar_header" />
         
     </RelativeLayout>
 

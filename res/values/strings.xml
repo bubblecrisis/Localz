@@ -55,4 +55,7 @@
     
   	<!-- Filter -->
   	<string name="filter_submit">Done!</string>
+  	
+  	<!-- Action Bar -->
+  	<string name="actionbar_header">CHADSTONE</string>
 </resources>

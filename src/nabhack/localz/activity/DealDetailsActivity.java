@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.FacebookRequestError;
@@ -63,11 +65,10 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 @EActivity(R.layout.activity_deal_details)
 public class DealDetailsActivity extends FragmentActivity implements
 		IFacebookSessionCallback, GooglePlayServicesClient.ConnectionCallbacks,
-		GooglePlayServicesClient.OnConnectionFailedListener, Callback{
+		GooglePlayServicesClient.OnConnectionFailedListener, Callback {
 
 	static final float FADE_DEGREE = 0.35f;
 
-	
 	private static final String TAG = DealDetailsActivity.class.getSimpleName();
 
 	private LocationClient mLocationClient;
@@ -86,15 +87,14 @@ public class DealDetailsActivity extends FragmentActivity implements
 	boolean isLoggingIn;
 
 	boolean isNewFacebookLogin;
-	
+
 	SlidingMenu menu;
-	
+
 	SideMenuListFragment sideMenuFragment;
 
-	
 	@ViewById(R.id.pager_title_strip)
 	PagerTitleStrip pagerTitleStrip;
-	
+
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -151,7 +151,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 		});
 
 		pagerTitleStrip.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-		
+
 		setUpMapIfNeeded();
 		setUpMap();
 
@@ -163,10 +163,15 @@ public class DealDetailsActivity extends FragmentActivity implements
 		ft.add(R.id.pager, facebookFragment);
 		ft.commit();
 	}
-	
+
 	void initMenuOPtions() {
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		getActionBar().setCustomView(R.layout.abs_details_layout);
+		Typeface rockbFont = Typeface.createFromAsset(this.getAssets(),
+				"rockb.ttf");
+		((TextView) getActionBar().getCustomView().findViewById(
+				R.id.actionbar_header)).setTypeface(rockbFont);
+
 		ImageView menuIcon = (ImageView) findViewById(R.id.abs_home_menu_id);
 		menuIcon.setOnClickListener(new OnClickListener() {
 
@@ -176,7 +181,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 			}
 		});
 	}
-	
+
 	private void initSideMenu() {
 		// configure the SlidingMenu
 		menu = new SlidingMenu(this);
@@ -210,31 +215,31 @@ public class DealDetailsActivity extends FragmentActivity implements
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
-		if(item.getItemId() == R.id.action_share) {
+		if (item.getItemId() == R.id.action_share) {
 			promptUserToPostDetailOnfacebook();
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
-	
+
 	@UiThread
 	public void promptUserToPostDetailOnfacebook() {
 		final SimpleTextDialog cancelDialog = new SimpleTextDialog.Builder()
-		.body(R.string.msg_facebook_post_on_wall)
-		.middleButtonVisible(false)
-		.sendButtonText(R.string.facebook_share_to_wall_button_text)
-		.cancelButtonText(R.string.common_cancel_button_text)
-		.build(DealDetailsActivity.this);
+				.body(R.string.msg_facebook_post_on_wall)
+				.middleButtonVisible(false)
+				.sendButtonText(R.string.facebook_share_to_wall_button_text)
+				.cancelButtonText(R.string.common_cancel_button_text)
+				.build(DealDetailsActivity.this);
 
 		cancelDialog.setOnCancelClickListener(new OnClickListener() {
-		
+
 			@Override
 			public void onClick(View v) {
 				cancelDialog.getDialog().dismiss();
 			}
 		});
-		
+
 		cancelDialog.setOnSendClickListener(new OnClickListener() {
-		
+
 			@Override
 			public void onClick(View v) {
 				cancelDialog.getDialog().dismiss();
@@ -242,7 +247,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 					isLoggingIn = true;
 					isNewFacebookLogin = true;
 					facebookFragment.logoff();
-					facebookFragment.loginViaWebDialog();					
+					facebookFragment.loginViaWebDialog();
 				} else {
 					postDealOnFacebook();
 				}
@@ -250,7 +255,6 @@ public class DealDetailsActivity extends FragmentActivity implements
 		});
 		cancelDialog.show();
 	}
-	
 
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -298,7 +302,7 @@ public class DealDetailsActivity extends FragmentActivity implements
 			if (isNewFacebookLogin) {
 				postDealOnFacebook();
 				isNewFacebookLogin = false;
-			}		
+			}
 		} else if (session.isClosed()) {
 			if (!isNewFacebookLogin && exception != null) {
 				new SimpleTextDialog.Builder().cancelButtonVisible(false)
@@ -322,10 +326,15 @@ public class DealDetailsActivity extends FragmentActivity implements
 			Log.i(TAG, "Posting deal on facebook");
 			Bundle postParams = new Bundle();
 			postParams.putString("name", "Localz");
-			postParams.putString("caption","Finding deals at your local shopping centre.");
-			postParams.putString("description", application.getCurrentDeal().getDescription());
-			postParams.putString("link","https://developers.facebook.com/android");
-			postParams.putString("picture","https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
+			postParams.putString("caption",
+					"Finding deals at your local shopping centre.");
+			postParams.putString("description", application.getCurrentDeal()
+					.getDescription());
+			postParams.putString("link",
+					"https://developers.facebook.com/android");
+			postParams
+					.putString("picture",
+							"https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
 
 			Request.Callback callback = new Request.Callback() {
 				public void onCompleted(Response response) {
@@ -353,9 +362,10 @@ public class DealDetailsActivity extends FragmentActivity implements
 
 	@UiThread
 	public void showFacebookShareToast() {
-		Toast.makeText(DealDetailsActivity.this, "Deal shared on Facebook", Toast.LENGTH_SHORT).show();
+		Toast.makeText(DealDetailsActivity.this, "Deal shared on Facebook",
+				Toast.LENGTH_SHORT).show();
 	}
-	
+
 	private void setUpMapIfNeeded() {
 		if (mMap == null) {
 			mMap = mapFragment.getMap();
@@ -429,7 +439,6 @@ public class DealDetailsActivity extends FragmentActivity implements
 	}
 
 	public class MockLocationSource implements LocationSource {
-
 
 		private final Handler handler = new Handler();
 		private OnLocationChangedListener listener;

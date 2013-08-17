@@ -186,6 +186,12 @@ public class DealSummaryActivity extends FragmentActivity {
 		
 		super.onResume();
 	}
+	
+	@Override
+	protected void onPause() {
+		unregisterReceiver(notificationReceiver);
+		super.onPause();
+	}
 
 	/**
 	 * Gets the NFC message.
@@ -453,9 +459,9 @@ public class DealSummaryActivity extends FragmentActivity {
 			Log.d(TAG, "onReceive()");
 			// Here need to pull new deal, etc. leave it to Chris
 			AlertDialog.Builder builder = new AlertDialog.Builder(
-					DealSummaryActivity.this);
+					DealSummaryActivity.this); 
 			// Call server to retrieve deal deatails.
-			// getString("Message") should contain dealid
+			// getString("Message") should contain dealid 
 			builder.setTitle("New Localz Deal!")
 					.setMessage(
 							"New Deal has just been released. Details of the deail......")
