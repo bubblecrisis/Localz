@@ -77,6 +77,15 @@ public class Deal {
 	private boolean isUserRequired;
 	@Expose
 	private String discountCode;
+	@Expose
+	private int secondsToExpire;
+	
+	public int getSecondsToExpire() {
+		return secondsToExpire;
+	}
+	public void setSecondsToExpire(int secondsToExpire) {
+		this.secondsToExpire = secondsToExpire;
+	}
 	public Store getStore() {
 		return store;
 	}

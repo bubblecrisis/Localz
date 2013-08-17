@@ -20,7 +20,8 @@
 	isPush:true,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"Movie123ABC"
+    discountCode:"Movie123ABC",
+    secondsToExpire:380
 },
  {
     store:{
@@ -44,7 +45,8 @@
 	isPush:true,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"LGLCD123ABC"
+    discountCode:"LGLCD123ABC",
+    secondsToExpire:1380    
 },
  {
     store:{
@@ -68,7 +70,8 @@
 	isPush:true,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"RevlonFree123ABC"
+    discountCode:"RevlonFree123ABC",
+    secondsToExpire:480  
 },
  {
     store:{
@@ -92,7 +95,8 @@
 	isPush:false,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"Icon247-123ABC"
+    discountCode:"Icon247-123ABC",
+    secondsToExpire:680    
 },
  {
     store:{
@@ -116,7 +120,8 @@
 	isPush:true,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"Activebra123ABC"
+    discountCode:"Activebra123ABC",
+    secondsToExpire:720  
 },
  {
     store:{
@@ -140,7 +145,9 @@
 	isPush:true,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"PeaCoat123ABC"
+    discountCode:"PeaCoat123ABC",
+    secondsToExpire:720  
+    
 },
  {
     store:{
@@ -164,7 +171,8 @@
 	isPush:true,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"halfchicken123ABC"
+    discountCode:"halfchicken123ABC",
+    secondsToExpire:1720      
 },
  {
     store:{
@@ -188,7 +196,8 @@
 	isPush:false,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"burritodeal123ABC"
+    discountCode:"burritodeal123ABC",
+    secondsToExpire:903      
 },
  {
     store:{
@@ -212,7 +221,8 @@
 	isPush:false,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"lattedeal123ABC"
+    discountCode:"lattedeal123ABC",
+    secondsToExpire:1203 
 },
  {
     store:{
@@ -236,7 +246,8 @@
 	isPush:false,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"lattedeal123ABC"
+    discountCode:"lattedeal123ABC",
+    secondsToExpire:5203 
 },
  {
     store:{
@@ -260,5 +271,6 @@
 	isPush:false,
     isSecureable:true,
     isUserRequired:false,
-    discountCode:"3pmConjuring123ABC"
+    discountCode:"3pmConjuring123ABC",
+    secondsToExpire:123 
 }]

@@ -46,6 +46,7 @@
                 android:textColor="#FFFFFF"
                 android:textIsSelectable="false"
                 android:textStyle="bold" />
+            
             <TextView
                 android:id="@+id/remaining"
                 android:layout_width="match_parent"
