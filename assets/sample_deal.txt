@@ -3,6 +3,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"JB Hifi"
     },
+    id:"1",
 	categories:["Electronics", "Entetainment"],
     title:"75% off all movies next 20 customers",
 	savings:"",
@@ -26,6 +27,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Dick Smith"
     },
+    id:"2",
 	categories:["Electronics"],
     title:"50% off any LG LCD monitors next 5 customers",
 	savings:"",
@@ -49,6 +51,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"David Jones"
     },
+    id:"3",
 	categories:["Fashion", "Cosmetics"],
     title:"Free Revlon Classic Nail Enamel 5 colour kit for next 10 customers",
 	savings:"",
@@ -72,6 +75,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Wittner Shoes"
     },
+    id:"4",
 	categories:["Fashion", "Ladies", "Shoes"],
     title:"30% off 24:7 Icon summer sandales for next 5 customers",
 	savings:"",
@@ -95,6 +99,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Bonds"
     },
+    id:"5",
 	categories:["Fashion", "Ladies"],
     title:"Free active wear bra for next 10 customers",
 	savings:"",
@@ -118,6 +123,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Forever New"
     },
+    id:"6",
 	categories:["Fashion", "Ladies"],
     title:"75% off winter pea coat stock",
 	savings:"",
@@ -141,6 +147,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Nandos"
     },
+    id:"7",
 	categories:["Food", "Cafes & Restaurants"],
     title:"Buy 1 get 1 free chicken till 4pm",
 	savings:"",
@@ -164,6 +171,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Salsas"
     },
+    id:"8",
 	categories:["Food", "Cafes & Restaurants"],
     title:"Free regular burrito next 5 customers",
 	savings:"",
@@ -187,6 +195,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Cafe Moderno"
     },
+    id:"9",
 	categories:["Food", "Cafes & Restaurants"],
     title:"$1.00 Latte from 1pm",
 	savings:"",
@@ -210,6 +219,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Chocolate World"
     },
+    id:"10",
 	categories:["Food"],
     title:"Free Cote d'Or chocolate with any purchase",
 	savings:"",
@@ -233,6 +243,7 @@
          _id:"new mongoose.Types.ObjectId",
         name:"Hoyts Cinema"
     },
+    id:"11",
 	categories:["Entetainment", "Cinema"],
     title:"$5 seats for 3pm showing of The Conjuring",
 	savings:"",

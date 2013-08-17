@@ -14,15 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
-        <!--
-         Button
-        android:id="@+id/share_facebook_btn"
-        android:text="Share on facebook" 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/
-        -->
-
     </LinearLayout>
 
 </LinearLayout>

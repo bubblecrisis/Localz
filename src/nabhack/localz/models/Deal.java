@@ -37,7 +37,8 @@ public class Deal {
 	public static enum Status {
 		draft, published, complete, cancelled, suspended;
 	}
-
+	@Expose
+	private String id;
 	@Expose
 	private Store store;
 	@Expose
@@ -181,6 +182,12 @@ public class Deal {
 	}
 	public void setDiscountCode(String discountCode) {
 		this.discountCode = discountCode;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 
 

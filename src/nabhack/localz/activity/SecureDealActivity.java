@@ -33,6 +33,9 @@ public class SecureDealActivity extends Activity {
 	@ViewById(R.id.secure_deal_image)
 	ImageView image;
 
+	@ViewById(R.id.deal_title)
+	TextView dealTitle;
+	
 	@ViewById(R.id.secure_deal_details)
 	TextView details;
 
@@ -76,6 +79,7 @@ public class SecureDealActivity extends Activity {
 			application.setCurrentDeal(application.getDeal(3));
 			
 			Deal deal = application.getCurrentDeal();
+			dealTitle.setText(deal.getTitle());
 			details.setText(deal.getDescription());
 			
 			// Uncomment when data will be available online

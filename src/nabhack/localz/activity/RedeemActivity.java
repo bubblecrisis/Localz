@@ -1,5 +1,6 @@
 package nabhack.localz.activity;
 
+import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.ui.ImageUtils;
 import android.app.Activity;
@@ -7,32 +8,39 @@ import android.graphics.Bitmap;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.zxing.WriterException;
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.App;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.Extra;
-
 import com.googlecode.androidannotations.annotations.SystemService;
 import com.googlecode.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_redeem)
 
 public class RedeemActivity extends Activity {
-
+	
+	@App
+	LocalzApp application;
+	
 	@SystemService
 	WindowManager windowsManager;
 	
 	@ViewById(R.id.qrcode_image_view)
 	ImageView qrImageView;
 
+	@ViewById(R.id.deal_title)
+	TextView dealTitle;
+	
 	@Extra(SecureDealActivity.DEALID_INTENT_EXTRAS)
 	String dealid;
 	
 	@AfterViews
 	void initDisplay() {
-		//TODO get real deal.
-		createQRCode("123");
+		createQRCode(application.getCurrentDeal().getTitle());
+		dealTitle.setText(application.getCurrentDeal().getTitle());
 	}
 	
 	private void createQRCode(String id) {
