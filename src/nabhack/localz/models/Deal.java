@@ -33,6 +33,8 @@ import com.google.gson.annotations.Expose;
  * 
  */
 public class Deal {
+	
+	public static final String JSON_KEY = "data";
 
 	public static enum Status {
 		draft, published, complete, cancelled, suspended;
