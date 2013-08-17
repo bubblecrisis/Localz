@@ -3,23 +3,15 @@ package nabhack.localz.activity;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
-
-import nabhack.localz.models.Location;
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
-
-import android.content.Intent;
-
 import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.App;
-import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
 import com.googlecode.androidannotations.annotations.ViewById;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * A dummy fragment representing a section of the app, but that simply displays
@@ -42,9 +34,6 @@ public class DealDetailsFragment extends Fragment {
 
 	@ViewById(R.id.remaining)
 	TextView remaining;
-
-	// @ViewById(R.id.share_facebook_btn)
-	// Button faceBookShareBtn;
 
 	private Deal deal;
 
@@ -78,16 +67,4 @@ public class DealDetailsFragment extends Fragment {
 																	// remaining
 	}
 
-	/*
-	 * @Click(R.id.share_facebook_btn) void clickOnShareFaceBookBtn() {
-	 * DealDetailsActivity dealDetailsActivity = (DealDetailsActivity)
-	 * getActivity(); dealDetailsActivity.isLoggingIn = true;
-	 * dealDetailsActivity.isNewFacebookLogin = true;
-	 * dealDetailsActivity.facebookFragment.logoff();
-	 * dealDetailsActivity.facebookFragment.loginViaWebDialog();
-	 * 
-	 * // dealDetailsActivity.publishStory(); }
-	 */
-
-	// dealDetailsActivity.publishStory();
 }

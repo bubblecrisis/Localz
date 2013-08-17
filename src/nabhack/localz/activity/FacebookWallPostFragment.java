@@ -135,7 +135,7 @@ public class FacebookWallPostFragment extends Fragment {
 
 	private void cancelFacebookDialog(final String facebookId) {
 		final SimpleTextDialog cancelDialog = new SimpleTextDialog.Builder()
-				.body(R.string.nab_msg_facebook_post_on_wall)
+				.body(R.string.msg_facebook_post_on_wall)
 				.middleButtonVisible(false)
 				.sendButtonText(R.string.facebook_share_to_wall_button_text)
 				.cancelButtonText(R.string.common_cancel_button_text)
@@ -163,7 +163,7 @@ public class FacebookWallPostFragment extends Fragment {
 
 	private void errorFacebookDialog(final String facebookId) {
 		final SimpleTextDialog retryDialog = new SimpleTextDialog.Builder()
-				.body(R.string.nab_msg_error_failed_to_post_to_facebook_wall)
+				.body(R.string.msg_error_failed_to_post_to_facebook_wall)
 				.middleButtonVisible(false)
 				.sendButtonText(R.string.facebook_share_to_wall_button_text)
 				.cancelButtonText(R.string.common_cancel_button_text)

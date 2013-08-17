@@ -12,14 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import nabhack.localz.LocalzApp;
+import android.widget.ListView;
 import nabhack.localz.R.id;
 import nabhack.localz.R.layout;
 
-public final class SecureDealActivity_
-    extends SecureDealActivity
+public final class FilterActivity_
+    extends FilterActivity
 {
 
 
@@ -27,33 +25,30 @@ public final class SecureDealActivity_
     public void onCreate(Bundle savedInstanceState) {
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_secure_deal);
+        setContentView(layout.activity_filter);
     }
 
     private void init_(Bundle savedInstanceState) {
-        application = ((LocalzApp) this.getApplication());
     }
 
     private void afterSetContentView_() {
-        details = ((TextView) findViewById(id.secure_deal_details));
-        remaining = ((TextView) findViewById(id.secure_deal_remaining));
-        image = ((ImageView) findViewById(id.secure_deal_image));
+        filterListView = ((ListView) findViewById(id.filter_list_view));
         {
-            View view = findViewById(id.secure_deal);
+            View view = findViewById(id.filter_submit);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SecureDealActivity_.this.secureDeal();
+                        FilterActivity_.this.done();
                     }
 
                 }
                 );
             }
         }
-        setupView();
+        initView();
     }
 
     @Override
@@ -74,8 +69,8 @@ public final class SecureDealActivity_
         afterSetContentView_();
     }
 
-    public static SecureDealActivity_.IntentBuilder_ intent(Context context) {
-        return new SecureDealActivity_.IntentBuilder_(context);
+    public static FilterActivity_.IntentBuilder_ intent(Context context) {
+        return new FilterActivity_.IntentBuilder_(context);
     }
 
     public static class IntentBuilder_ {
@@ -85,14 +80,14 @@ public final class SecureDealActivity_
 
         public IntentBuilder_(Context context) {
             context_ = context;
-            intent_ = new Intent(context, SecureDealActivity_.class);
+            intent_ = new Intent(context, FilterActivity_.class);
         }
 
         public Intent get() {
             return intent_;
         }
 
-        public SecureDealActivity_.IntentBuilder_ flags(int flags) {
+        public FilterActivity_.IntentBuilder_ flags(int flags) {
             intent_.setFlags(flags);
             return this;
         }
