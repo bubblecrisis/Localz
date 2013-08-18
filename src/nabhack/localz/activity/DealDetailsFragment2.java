@@ -167,8 +167,6 @@ public class DealDetailsFragment2 extends Fragment implements
 	private void setUpMap() {
 		mMap.setIndoorEnabled(true);
 		mMap.setMyLocationEnabled(true);
-
-		application.setCurrentDeal(application.getDeal(0));
 		moveCameraToPositionAndAddMarker();
 	}
 
