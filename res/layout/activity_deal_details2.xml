@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/facebook_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#25b89b"
+        android:orientation="vertical"
+        android:paddingBottom="65dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp" >
+
+        <LinearLayout
+            android:id="@+id/deal_details_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_rectangle"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/claimDeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="left"
+        android:background="#2d3e50"
+        android:clickable="false"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="To claim this deal head to Missys Cupcakes and TAP!"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#e64c3c"
+        android:textIsSelectable="false"
+        android:textSize="22sp" >
+    </TextView>
+
+</RelativeLayout>

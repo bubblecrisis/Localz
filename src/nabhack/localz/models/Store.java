@@ -15,6 +15,15 @@ public class Store {
 	private String _id;
 	@Expose
 	private String name;
+	@Expose
+	private String url;
+	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public String get_id() {
 		return _id;
 	}

@@ -24,7 +24,7 @@
         android:paddingTop="5dp"
         android:text="Lorem ipsum dolor sit amet, consectetur"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000"
+        android:textColor="#2d3e50"
         android:textIsSelectable="false"
         android:textStyle="bold" >
     </TextView>
