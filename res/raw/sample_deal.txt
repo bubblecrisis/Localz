@@ -5,7 +5,7 @@
     },
     id:"1",
 	categories:["Electronics", "Entetainment"],
-    title:"Chip Flix",
+    title:"Cheap Flix",
 	savings:"50%",
 	cost:"",
     description:"50% off of any regular priced DVD or Blu-Ray movie. Applys to any in-stock movie.  Must be claimed by 6pm 31 August 2013. Not valid with any other offers",
