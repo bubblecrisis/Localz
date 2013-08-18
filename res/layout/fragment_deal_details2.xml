@@ -167,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             class="com.google.android.gms.maps.SupportMapFragment"
-            android:background="#25b89b" />
+            android:background="#97b7b1" />
 
         <TextView
             android:layout_width="match_parent"
