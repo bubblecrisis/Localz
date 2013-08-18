@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.models.Deal;
+import android.app.FragmentTransaction;
 import android.content.IntentSender;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -69,6 +71,9 @@ public class DealDetailsFragment2 extends Fragment implements
 
 	@ViewById(R.id.url)
 	TextView url;
+	
+	@ViewById(R.id.fragment_details_location)
+	LinearLayout detailLocationLayout;
 
 	private Deal deal;
 
@@ -100,13 +105,17 @@ public class DealDetailsFragment2 extends Fragment implements
 
 	@AfterViews
 	void setupView() {
-		setUpMapIfNeeded();
-		setUpMap();
+		if (!(getActivity() instanceof SecureDealActivity)) {
+			setUpMapIfNeeded();
+			setUpMap();
+		} else {
+			detailLocationLayout.setVisibility(View.GONE);
+		}
 		title.setText(deal.getTitle());
 		description.setText(deal.getDescription());
 		url.setText(deal.getStore().getUrl());
 		where.setText("WHERE IS " + deal.getStore().getName().toUpperCase());
-		
+
 		// Comment next block when data available online
 		String uri = "drawable/"
 				+ deal.getDescImgs()[0].replaceFirst("[.][^.]+$", "");
@@ -119,8 +128,7 @@ public class DealDetailsFragment2 extends Fragment implements
 		if (deal.getQuantityLimit() == 0) {
 			remaining.setVisibility(View.GONE);
 		} else {
-			remaining.setText(deal.getQuantityLimit()
-					+ " Remaining");
+			remaining.setText(deal.getQuantityLimit() + " Remaining");
 			remaining.setVisibility(View.VISIBLE);
 		}
 		if (deal.getSecondsToExpire() == 0) {

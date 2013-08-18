@@ -139,6 +139,7 @@
     <View style="@style/Horizontal.Divider" />
 
     <LinearLayout
+        android:id="@+id/fragment_details_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >

@@ -1,38 +1,52 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sec_facebook_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DealSummaryActivity" >
+    android:layout_height="match_parent" >
 
-      <TextView
-        android:id="@+id/deal_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/deal_heading"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:text="Secure Deal"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="22sp" />
-    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#25b89b"
+        android:orientation="vertical"
+        android:paddingBottom="65dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp" >
+
+        <LinearLayout
+            android:id="@+id/sec_deal_details_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_rectangle"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
-        android:id="@+id/deals_fragment"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical" >
+        android:layout_alignParentBottom="true"
+        android:background="#2d3e50" >
+
+        <TextView
+            android:id="@+id/secureDeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#602874"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"  
+            android:layout_marginLeft="100dp"
+            android:padding="10dp"
+            android:text="To redeem this deal head to Missys Cupcakes and TAP!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ebb815"
+            android:textIsSelectable="false"
+            android:textSize="36sp" >
+        </TextView>
     </LinearLayout>
-   
-    <Button
-        android:id="@+id/secure_deal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/secure_deal" />
- 
-</LinearLayout>
+
+</RelativeLayout>

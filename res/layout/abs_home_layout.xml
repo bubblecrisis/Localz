@@ -22,7 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_menu_notifications" />
+                android:src="@drawable/ic_menu" 
+                android:layout_marginRight="6dp"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -44,9 +45,10 @@
             android:id="@+id/abs_home_menu_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/content_edit" />
+            android:src="@drawable/ic_edit" />
     </RelativeLayout>
 
 </FrameLayout>

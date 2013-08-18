@@ -39,11 +39,13 @@ public class RedeemActivity extends Activity {
 	@ViewById(R.id.deal_title)
 	TextView dealTitle;
 	
-	@Extra(SecureDealActivity.DEALID_INTENT_EXTRAS)
+	@Extra(SecureDealActivity_old.DEALID_INTENT_EXTRAS)
 	String dealid;
 	
 	@AfterViews
 	void initDisplay() {
+		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		application.setCurrentDeal(application.getDeal(3));
 		Deal deal = application.getCurrentDeal();
 		createQRCode(application.getCurrentDeal().getTitle());

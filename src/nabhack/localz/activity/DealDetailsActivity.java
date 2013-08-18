@@ -16,6 +16,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -166,13 +167,15 @@ public class DealDetailsActivity extends FragmentActivity implements
 
 	void initMenuOPtions() {
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-		getActionBar().setCustomView(R.layout.abs_details_layout);
+		getActionBar().setCustomView(R.layout.abs_details_layout);	
 		Typeface rockbFont = Typeface.createFromAsset(this.getAssets(),
 				"rockb.ttf");
 		((TextView) getActionBar().getCustomView().findViewById(
 				R.id.actionbar_header)).setTypeface(rockbFont);
 
 		ImageView menuIcon = (ImageView) findViewById(R.id.abs_home_menu_id);
+		getActionBar().setLogo(getResources().getDrawable(R.drawable.ic_menu_localz_logo));
+		
 		menuIcon.setOnClickListener(new OnClickListener() {
 
 			@Override
