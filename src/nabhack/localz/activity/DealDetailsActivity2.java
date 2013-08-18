@@ -9,7 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ActionBar;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -69,6 +71,7 @@ public class DealDetailsActivity2 extends FragmentActivity implements
 		dealDetailsFragment.setDeal(application.getCurrentDeal());
 		claimDeal.setText("To claim this deal head to "
 				+ application.getCurrentDeal().getStore().getName() + " and TAP!");
+		initMenuOPtions();
 	}
 
 	void initMenuOPtions() {
@@ -81,6 +84,7 @@ public class DealDetailsActivity2 extends FragmentActivity implements
 
 		ImageView menuIcon = (ImageView) findViewById(R.id.abs_home_menu_id);
 		menuIcon.setVisibility(View.GONE);
+		getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2d3e50")));
 	}
 
 	@Override

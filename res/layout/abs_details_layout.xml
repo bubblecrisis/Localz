@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/abs_home_menu_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:paddingLeft="4dp" >
