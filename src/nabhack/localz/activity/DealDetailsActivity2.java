@@ -140,15 +140,10 @@ public class DealDetailsActivity2 extends FragmentActivity implements
 			Log.i(TAG, "Posting deal on facebook");
 			Bundle postParams = new Bundle();
 			postParams.putString("name", "Localz");
-			postParams.putString("caption",
-					"Finding deals at your local shopping centre.");
-			postParams.putString("description", application.getCurrentDeal()
-					.getDescription());
-			postParams.putString("link",
-					"https://developers.facebook.com/android");
-			postParams
-					.putString("picture",
-							"https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
+			postParams.putString("caption","Finding deals at your local shopping centre.");
+			postParams.putString("description", application.getCurrentDeal().getDescription());
+			postParams.putString("link","https://www.localz.com.au");
+			postParams.putString("picture","http://images.localz.co/localz/localz_fb.png");
 
 			Request.Callback callback = new Request.Callback() {
 				public void onCompleted(Response response) {

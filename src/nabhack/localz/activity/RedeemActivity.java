@@ -7,7 +7,9 @@ import nabhack.localz.ui.ImageUtils;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,17 +32,27 @@ public class RedeemActivity extends Activity {
 	@SystemService
 	WindowManager windowsManager;
 	
-	@ViewById(R.id.qrcode_image_view)
-	ImageView qrImageView;
+	@Extra(SecureDealActivity.DEALID_INTENT_EXTRAS)
+	String dealid;
+	
+	@ViewById(R.id.title)
+	TextView title;
 
 	@ViewById(R.id.image)
 	ImageView image;
+
+	@ViewById(R.id.special)
+	TextView special;
+
+	@ViewById(R.id.time)
+	TextView time;
+
+	@ViewById(R.id.remaining)
+	TextView remaining;
 	
-	@ViewById(R.id.deal_title)
-	TextView dealTitle;
-	
-	@Extra(SecureDealActivity_old.DEALID_INTENT_EXTRAS)
-	String dealid;
+
+	@ViewById(R.id.discountCode)
+	TextView discountCode;
 	
 	@AfterViews
 	void initDisplay() {
@@ -48,25 +60,46 @@ public class RedeemActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		application.setCurrentDeal(application.getDeal(3));
 		Deal deal = application.getCurrentDeal();
-		createQRCode(application.getCurrentDeal().getTitle());
-		dealTitle.setText(application.getCurrentDeal().getTitle());
+		title.setText(deal.getTitle());
+		
+		// Comment next block when data available online
 		String uri = "drawable/"
 				+ deal.getDescImgs()[0].replaceFirst("[.][^.]+$", "");
-		int imageResource = getResources().getIdentifier(uri, null,getPackageName());
-		Drawable drawImage = getResources().getDrawable(imageResource);
+		int imageResource = getResources().getIdentifier(uri, null,
+				RedeemActivity.this.getPackageName());
+		Drawable drawImage = RedeemActivity.this.getResources().getDrawable(
+				imageResource);
 		image.setImageDrawable(drawImage);
+		discountCode.setText("Provide Discount Code to " + deal.getStore().getName() + " to claim!");
+
+		time.setText(getTimeFormat(deal.getSecondsToExpire()));
+		timerCountDown(deal.getSecondsToExpire(), time);
 		
 	}
 	
-	private void createQRCode(String id) {
-		try {
-			Display display = windowsManager.getDefaultDisplay();
-			int smallerDimension = (int) (display.getHeight() / 2);
-			Bitmap bitmap = ImageUtils.generateQRCode(id, smallerDimension, this);
-			qrImageView.setImageBitmap(bitmap);
-		} catch (WriterException e) {
-			
-		}
+	public void timerCountDown(final int secondCount, final TextView textView) {
+
+		Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+			public void run() {
+				if (secondCount > 0) {
+					// format time and display
+					textView.setText(getTimeFormat(secondCount));
+					timerCountDown(secondCount - 1, textView);
+				} else {
+
+				}
+			}
+		}, 1000);
+	}
+
+	private String getTimeFormat(int secs) {
+		int hours = secs / 3600, remainder = secs % 3600, minutes = remainder / 60, seconds = remainder % 60;
+
+		String disHour = (hours < 10 ? "0" : "") + hours, disMinu = (minutes < 10 ? "0"
+				: "")
+				+ minutes, disSec = (seconds < 10 ? "0" : "") + seconds;
+		return disHour + ":" + disMinu + ":" + disSec;
 	}
 
 }
