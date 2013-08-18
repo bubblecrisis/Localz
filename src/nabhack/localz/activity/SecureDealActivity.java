@@ -72,6 +72,7 @@ public class SecureDealActivity extends FragmentActivity implements
 		ft.add(R.id.sec_deal_details_fragment, dealDetailsFragment);
 		ft.add(R.id.sec_facebook_fragment, facebookFragment);
 		ft.commit();
+		application.setCurrentDeal(application.getDeal(3));
 		dealDetailsFragment.setDeal(application.getCurrentDeal());
 		secureDeal.setText("Claim deal!");
 	}
