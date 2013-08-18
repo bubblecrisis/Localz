@@ -85,6 +85,7 @@ public class SecureDealActivity extends FragmentActivity implements
 	}
 
 
+	@AfterViews
 	void initMenuOPtions() {
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		getActionBar().setCustomView(R.layout.abs_details_layout);
