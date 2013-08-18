@@ -1,7 +1,8 @@
 [{
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"JB Hifi"
+        name:"JB Hifi",
+        url:"http://www.jbhifi.com.au"
     },
     id:"1",
 	categories:["Electronics", "Entetainment"],
@@ -27,7 +28,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Dick Smith"
+        name:"Dick Smith",
+        url:"http://www.dicksmith.com.au"
     },
     id:"2",
 	categories:["Electronics"],
@@ -54,7 +56,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"David Jones"
+        name:"David Jones",
+        url:"http://davidjones.com.au"
     },
     id:"3",
 	categories:["Fashion", "Cosmetics"],
@@ -80,7 +83,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Wittner Shoes"
+        name:"Wittner Shoes",
+        url:"http://www.wittnershoes.com.au"
     },
     id:"4",
 	categories:["Fashion", "Ladies", "Shoes"],
@@ -106,7 +110,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Bonds"
+        name:"Bonds",
+        url:"http://bonds.com.au"
     },
     id:"5",
 	categories:["Fashion", "Ladies"],
@@ -132,7 +137,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Forever New"
+        name:"Forever New",
+        url:"http://www.forevernew.com.au"
     },
     id:"6",
 	categories:["Fashion", "Ladies"],
@@ -159,7 +165,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Nandos"
+        name:"Nandos",
+        url:"http://www.nandos.com.au"
     },
     id:"7",
 	categories:["Food", "Cafes & Restaurants"],
@@ -185,7 +192,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Salsas"
+        name:"Salsas",
+        url:"http://wwww.salsas.com.au"
     },
     id:"8",
 	categories:["Food", "Cafes & Restaurants"],
@@ -211,7 +219,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Cafe Moderno"
+        name:"Cafe Moderno",
+        url:"http://www.cafemoderno.com.au"
     },
     id:"9",
 	categories:["Food", "Cafes & Restaurants"],
@@ -237,7 +246,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Chocolate World"
+        name:"Chocolate World",
+        url:"http://www.chocoloateworld.com.au"
     },
     id:"10",
 	categories:["Food"],
@@ -263,7 +273,8 @@
  {
     store:{
          _id:"new mongoose.Types.ObjectId",
-        name:"Hoyts Cinema"
+        name:"Hoyts Cinema",
+        url:"http://wwww.hoytscinema.com.au"
     },
     id:"11",
 	categories:["Entetainment", "Cinema"],

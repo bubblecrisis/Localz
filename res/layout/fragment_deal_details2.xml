@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="0.3"
+        android:clickable="false"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="Missys Cupcakes - treat yourself!"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#2d3e50"
+        android:textIsSelectable="false"
+        android:textStyle="bold" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/special"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.5"
+            android:clickable="false"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:text="2 for 1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#e64c3c"
+            android:textIsSelectable="false"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View style="@style/Vertical.Divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingRight="10dp"
+                android:text="02:02:12 31"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#e64c3c"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/remaining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="5dp"
+                android:paddingRight="10dp"
+                android:text="Time remaining"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#e64c3c"
+                android:textIsSelectable="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/Horizontal.Divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.3"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="DEAL DETAILS"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#2d3e50"
+            android:textIsSelectable="false"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.3"
+            android:clickable="false"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Blah Blah"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#2d3e50"
+            android:textIsSelectable="false" >
+        </TextView>
+    </LinearLayout>
+
+    <View style="@style/Horizontal.Divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView android:id="@+id/where"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.3"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="WHERE IS MISSYS CUPCAKES"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#2d3e50"
+            android:textIsSelectable="false"
+            android:textStyle="bold" >
+        </TextView>
+
+        <fragment
+            android:id="@+id/shop_map"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:background="#25b89b" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Store Address"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#2d3e50"
+            android:textIsSelectable="false" >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Shop Location in Mall"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#2d3e50"
+            android:textIsSelectable="false" >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Ph 04238912 352"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#2d3e50"
+            android:textIsSelectable="false" >
+        </TextView>
+
+        <TextView android:id="@+id/url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="5dp"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="www.missycupcakes.com.au"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#e64c3c"
+            android:textIsSelectable="false" >
+        </TextView>
+    </LinearLayout>
+    
+</LinearLayout>

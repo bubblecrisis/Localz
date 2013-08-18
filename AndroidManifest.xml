@@ -89,6 +89,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="nabhack.localz.activity.DealDetailsActivity2_"
+            android:label=""
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="nabhack.localz.activity.SecureDealActivity_"
             android:label=""
             android:screenOrientation="portrait" >

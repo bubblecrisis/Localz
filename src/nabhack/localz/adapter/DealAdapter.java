@@ -15,8 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-
 public class DealAdapter extends ArrayAdapter<Deal> {
 	protected List<Deal> deals;
 	protected int itemViewId;

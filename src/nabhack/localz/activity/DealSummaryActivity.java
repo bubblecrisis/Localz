@@ -8,15 +8,12 @@ import java.util.List;
 import nabhack.localz.LocalzApp;
 import nabhack.localz.R;
 import nabhack.localz.adapter.DealAdapter;
-import nabhack.localz.models.BasicResponse;
 import nabhack.localz.models.Category;
 import nabhack.localz.models.Deal;
 import nabhack.localz.models.DeviceCredential;
 import nabhack.localz.models.DeviceRegisterRequest;
-import nabhack.localz.models.DeviceSettings;
 import nabhack.localz.models.Filter;
 import nabhack.localz.models.Notification;
-import nabhack.localz.utils.GCMServerUtilities;
 import nabhack.localz.webservice.WebServiceController;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -28,7 +25,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
@@ -269,7 +265,7 @@ public class DealSummaryActivity extends FragmentActivity {
 	@ItemClick(R.id.listView)
 	void listViewClicked(int position) {
 		application.setCurrentDeal((Deal) listView.getItemAtPosition(position));
-		Intent intent = new Intent(this, DealDetailsActivity_.class);
+		Intent intent = new Intent(this, DealDetailsActivity2_.class);
 		startActivity(intent);
 	}
 
