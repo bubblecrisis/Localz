@@ -6,6 +6,8 @@ import nabhack.localz.models.Deal;
 import nabhack.localz.ui.ImageUtils;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.Display;
@@ -58,6 +60,7 @@ public class RedeemActivity extends Activity {
 	void initDisplay() {
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2d3e50")));
 		application.setCurrentDeal(application.getDeal(3));
 		Deal deal = application.getCurrentDeal();
 		title.setText(deal.getTitle());

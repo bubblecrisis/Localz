@@ -75,6 +75,8 @@ public class DealDetailsActivity2 extends FragmentActivity implements
 	}
 
 	void initMenuOPtions() {
+		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		getActionBar().setCustomView(R.layout.abs_details_layout);
 		Typeface rockbFont = Typeface.createFromAsset(this.getAssets(),
