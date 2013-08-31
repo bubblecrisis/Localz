@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:background="#4f4f4f"
+            android:background="@color/secondary"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:textColor="#fff" />
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         class="com.google.android.gms.maps.SupportMapFragment"
-        android:background="#97b7b1"/>
+        android:background="@color/primary"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"

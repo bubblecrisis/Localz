@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.web.client.RestTemplate;
+
 import nabhack.localz.models.Category;
 import nabhack.localz.models.Deal;
 import nabhack.localz.webservice.WebServiceController;
@@ -98,6 +100,9 @@ public class LocalzApp extends Application {
 		 * 150.8f)); dealsOnOffer.add(new Deal("Master Series Dark Nadir",
 		 * "16%", IMAGE_URL, DESC, 30.5f, 100.5f));
 		 */
+		
+		RestTemplate rt = new RestTemplate();
+		System.err.println(rt.headForHeaders("http://www.google.com"));
 	}
 
 	/**

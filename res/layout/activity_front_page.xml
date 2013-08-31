@@ -1,8 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#97b7b1"
-    android:orientation="vertical" >
+    android:background="@color/primary"
+    android:orientation="vertical"
+     >
 
     <ImageView
         android:id="@+id/logo"
@@ -11,6 +12,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:padding="16dp"
+        android:background="@drawable/round_rectangle"
         android:src="@drawable/splash_chadstone_logo" />
 
     <ProgressBar
@@ -18,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
+        android:padding="20dp"
         android:layout_centerHorizontal="true" />
 
     <TextView android:id="@+id/localzText"

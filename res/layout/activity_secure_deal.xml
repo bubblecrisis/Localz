@@ -7,7 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#97b7b1"
+        android:background="@color/secondary"
         android:orientation="vertical"
         android:paddingBottom="65dp"
         android:paddingLeft="16dp"
@@ -27,14 +27,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#2d3e50" >
+        android:background="@color/secondary" >
 
         <TextView
             android:id="@+id/secureDeal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="#602874"
             android:clickable="true"
             android:gravity="center"
             android:layout_marginTop="10dp"
@@ -43,7 +42,7 @@
             android:padding="10dp"
             android:text="To redeem this deal head to Missys Cupcakes and TAP!"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ebb815"
+            android:textColor="@color/text"
             android:textIsSelectable="false"
             android:textSize="36sp" >
         </TextView>

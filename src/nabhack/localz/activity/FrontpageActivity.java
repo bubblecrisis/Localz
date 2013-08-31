@@ -27,7 +27,7 @@ public class FrontpageActivity extends Activity {
 		Typeface rockbFont = Typeface.createFromAsset(this.getAssets(),"rockb.ttf");
 		localzText.setTypeface(rockbFont);
 		ActionBar bar = getActionBar();
-		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2d3e50")));
+		bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar)));
 	}
 	
 	@Background

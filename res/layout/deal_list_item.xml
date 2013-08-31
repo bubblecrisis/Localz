@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_rectangle"
     android:descendantFocusability="blocksDescendants"
     android:gravity="center_vertical|left"
     android:maxHeight="60dp"
     android:minHeight="60dp"
-    android:orientation="vertical" >
-
+    android:orientation="vertical" 
+    android:background="#ffffff"
+    >
+<!--     android:background="@drawable/round_rectangle"  -->
+    
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -57,7 +59,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <View style="@style/Vertical.Divider" />
+       <!-- <View style="@style/Vertical.Divider" /> --> 
 
         <LinearLayout
             android:layout_width="match_parent"

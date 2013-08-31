@@ -79,7 +79,7 @@ public class DealSummaryActivity extends FragmentActivity {
 	private static final String PROPERTY_APP_VERSION = "appVersion";
 	private static final String PROPERTY_ON_SERVER_EXPIRATION_TIME = "onServerExpirationTimeMs";
 	private static final String PROPERTY_ON_SERVER_DEVICE_ID = "haruku_device_id";
-	private static final String PROPERTY_ON_SERVER_DEVICE_KEY = "haruku_device_key§";
+	private static final String PROPERTY_ON_SERVER_DEVICE_KEY = "haruku_device_key";
 
 	/**
 	 * Default lifespan (7 days) of a reservation until it is considered
